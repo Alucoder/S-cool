@@ -33,7 +33,6 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.At
     public void onBindViewHolder(@NonNull AttendanceViewHolder holder, int position) {
         final UserModel student = studentList.get(position);
 
-        holder.tvSrank.setText(student.getRank() + "");
         holder.tvSname.setText(student.getName());
     }
 

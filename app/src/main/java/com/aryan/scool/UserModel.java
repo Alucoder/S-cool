@@ -4,21 +4,25 @@ import java.util.Date;
 
 public class UserModel {
 
-    String _id, name, classroom, password, email, profile, section, parentName, admin;
-    int rank;
+    String _id, name, userid, classroom, password, email, profile, parentName, admin;
     Date dob;
     long phone;
 
-    public UserModel(String name, String classroom, String password, String email, String profile, String section, String parentName, String admin, int rank, Date dob, long phone) {
+    public UserModel(String userid, String password) {
+        this.userid = userid;
+        this.password = password;
+    }
+
+    public UserModel(String _id, String name, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, long phone) {
+        this._id = _id;
         this.name = name;
+        this.userid = userid;
         this.classroom = classroom;
         this.password = password;
         this.email = email;
         this.profile = profile;
-        this.section = section;
         this.parentName = parentName;
         this.admin = admin;
-        this.rank = rank;
         this.dob = dob;
         this.phone = phone;
     }
@@ -37,6 +41,14 @@ public class UserModel {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
     }
 
     public String getClassroom() {
@@ -71,13 +83,6 @@ public class UserModel {
         this.profile = profile;
     }
 
-    public String getSection() {
-        return section;
-    }
-
-    public void setSection(String section) {
-        this.section = section;
-    }
 
     public String getParentName() {
         return parentName;
@@ -93,14 +98,6 @@ public class UserModel {
 
     public void setAdmin(String admin) {
         this.admin = admin;
-    }
-
-    public int getRank() {
-        return rank;
-    }
-
-    public void setRank(int rank) {
-        this.rank = rank;
     }
 
     public Date getDob() {
