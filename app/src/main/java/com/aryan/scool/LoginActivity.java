@@ -44,10 +44,10 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkValidation()) {
+//                if(checkValidation()) {
 //                    loginUser(id.getText().toString(), password.getText().toString());
                     loginUser();
-                }
+//                }
             }
         });
     }
@@ -79,23 +79,24 @@ public class LoginActivity extends AppCompatActivity {
 //    }
 
     private void loginUser() {
-        String userID = id.getText().toString().trim();
-        String userPass = password.getText().toString().trim();
+        if(checkValidation()) {
+            String userID = id.getText().toString().trim();
+            String userPass = password.getText().toString().trim();
 
-        LoginBLL lBll = new LoginBLL();
-        StrictModeClass.StrictMode();
+            LoginBLL lBll = new LoginBLL();
+            StrictModeClass.StrictMode();
 
-        if(lBll.checkUser(userID, userPass))
-        {
-            SharedPreferences sharedPreferences = getSharedPreferences("Scool",MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString("token", RetrofitUrl.token);
-            editor.commit();
-            startActivity(new Intent( LoginActivity.this, AttendanceActivity.class));
-            finish();
-        } else {
-            Toast.makeText(this, "Error!! incorrect username or password", Toast.LENGTH_SHORT).show();
-            id.requestFocus();
+            if (lBll.checkUser(userID, userPass)) {
+                SharedPreferences sharedPreferences = getSharedPreferences("Scool", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("token", RetrofitUrl.token);
+                editor.commit();
+                startActivity(new Intent(LoginActivity.this, AttendanceActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Error!! incorrect username or password", Toast.LENGTH_SHORT).show();
+                id.requestFocus();
+            }
         }
     }
 

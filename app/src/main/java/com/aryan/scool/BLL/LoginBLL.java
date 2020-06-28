@@ -13,8 +13,8 @@ public class LoginBLL {
     boolean isSuccess = false;
 
     public boolean checkUser(String username, String password) {
-        UserAPI usersAPI = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<TokenResponse> signUpResponseCall =usersAPI.login(username, password);
+        UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
+        Call<TokenResponse> signUpResponseCall =userAPI.login(username, password);
 
         try {
             Response<TokenResponse> loginResponse = signUpResponseCall.execute();

@@ -1,18 +1,11 @@
 package com.aryan.scool;
 
 public class TokenResponse {
-    private String token, status;
+    private String status;
+    private String token;
 
-    public TokenResponse(String token, String status) {
-        this.token = token;
+    public TokenResponse(String status, String token) {
         this.status = status;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
         this.token = token;
     }
 
@@ -22,5 +15,13 @@ public class TokenResponse {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
