@@ -10,9 +10,8 @@ import retrofit2.http.POST;
 
 public interface UserAPI {
 
-    @FormUrlEncoded
     @POST("users/login/user")
-    Call<TokenResponse> login(@Field("uname") String username, @Field("pass") String password);
+    Call<TokenResponse> login(@Body UserModel user);
 
     @GET("users/profile")
     Call<UserModel> getUserProfile(@Header("Authorization") String token);

@@ -3,6 +3,7 @@ package com.aryan.scool.BLL;
 import com.aryan.scool.RetrofitUrl;
 import com.aryan.scool.TokenResponse;
 import com.aryan.scool.UserAPI;
+import com.aryan.scool.UserModel;
 
 import java.io.IOException;
 
@@ -13,8 +14,9 @@ public class LoginBLL {
     boolean isSuccess = false;
 
     public boolean checkUser(String username, String password) {
+        UserModel userModel = new UserModel(username, password);
         UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<TokenResponse> signUpResponseCall =userAPI.login(username, password);
+        Call<TokenResponse> signUpResponseCall =userAPI.login(userModel);
 
         try {
             Response<TokenResponse> loginResponse = signUpResponseCall.execute();
