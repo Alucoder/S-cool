@@ -1,5 +1,7 @@
 package com.aryan.scool;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -11,6 +13,6 @@ public interface UserAPI {
     @POST("users/login/user")
     Call<TokenResponse> login(@Body UserModel users);
 
-    @GET("users/profile")
-    Call<UserModel> getUserProfile(@Header("Authorization") String token);
+    @GET("users/students")
+    Call<List<UserModel>> getStudentList();
 }
