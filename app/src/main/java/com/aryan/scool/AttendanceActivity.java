@@ -74,6 +74,7 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         else if(status.equals("Absent")){
             attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf("2077-10-20"), false));
         }
+
     }
 
     public void completeAttendance(){
