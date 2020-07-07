@@ -1,15 +1,19 @@
 package com.aryan.scool;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,11 +23,11 @@ import retrofit2.Response;
 
 public class AttendanceActivity extends AppCompatActivity implements TakeAttendance {
 
-    RecyclerView rvAttendance;
     Button btnAttendanceDone;
+    RecyclerView rvAttendance;
     List<UserModel> students;
     int totalStudents = 0;
-    List<AttendanceModel> attendanceList = new ArrayList<>();
+    public static ArrayList<AttendanceModel> attendanceList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,8 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         rvAttendance = findViewById(R.id.attendanceRV);
         btnAttendanceDone = findViewById(R.id.btnAttendanceDone);
         getStudents();
+        attendanceList = new ArrayList<>();
+
 
         btnAttendanceDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,13 +72,19 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void attendance(String id, String status) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
         if(status.equals("Present")){
-            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf("2077-10-20"), true));
+//            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), true));
+            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", dtf.format(now), true));
         }
         else if(status.equals("Absent")){
-            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf("2077-10-20"), false));
+//            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), false));
+            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", dtf.format(now), false));
         }
 
     }
@@ -84,7 +96,7 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         else {
             for (int i = 0; i < attendanceList.size(); i++) {
                 AttendanceAPI attendanceAPI = RetrofitUrl.getInstance().create(AttendanceAPI.class);
-                Call<Void> attendanceCall = attendanceAPI.takeAttendance(attendanceList.get(i));
+                Call<Void> attendanceCall = attendanceAPI.takeAttendance(RetrofitUrl.token, attendanceList.get(i));
                 attendanceCall.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {

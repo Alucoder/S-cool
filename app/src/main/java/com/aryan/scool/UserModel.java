@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserModel {
 
-    String _id, name, userid, classroom, password, email, profile, parentName, admin;
+    String _id, fname, userid, classroom, password, email, profile, parentName, admin;
     Date dob;
     long phone;
 
@@ -15,7 +15,7 @@ public class UserModel {
 
     public UserModel(String _id, String name, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, long phone) {
         this._id = _id;
-        this.name = name;
+        this.fname = name;
         this.userid = userid;
         this.classroom = classroom;
         this.password = password;
@@ -36,11 +36,11 @@ public class UserModel {
     }
 
     public String getName() {
-        return name;
+        return fname;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.fname = name;
     }
 
     public String getUserid() {
