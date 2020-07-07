@@ -23,7 +23,7 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
     Button btnAttendanceDone;
     List<UserModel> students;
     int totalStudents = 0;
-    List<AttendanceModel> attendanceList = new ArrayList<>();
+    public static ArrayList<AttendanceModel> attendanceList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         rvAttendance = findViewById(R.id.attendanceRV);
         btnAttendanceDone = findViewById(R.id.btnAttendanceDone);
         getStudents();
-
+        attendanceList = new ArrayList<>();
         btnAttendanceDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,7 +84,7 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         else {
             for (int i = 0; i < attendanceList.size(); i++) {
                 AttendanceAPI attendanceAPI = RetrofitUrl.getInstance().create(AttendanceAPI.class);
-                Call<Void> attendanceCall = attendanceAPI.takeAttendance(attendanceList.get(i));
+                Call<Void> attendanceCall = attendanceAPI.takeAttendance(RetrofitUrl.token, attendanceList.get(i));
                 attendanceCall.enqueue(new Callback<Void>() {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
