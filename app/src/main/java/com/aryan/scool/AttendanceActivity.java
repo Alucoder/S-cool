@@ -1,15 +1,19 @@
 package com.aryan.scool;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +38,8 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         btnAttendanceDone = findViewById(R.id.btnAttendanceDone);
         getStudents();
         attendanceList = new ArrayList<>();
+
+
         btnAttendanceDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,13 +72,17 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void attendance(String id, String status) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
         if(status.equals("Present")){
-            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf("2077-10-20"), true));
+            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), true));
         }
         else if(status.equals("Absent")){
-            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf("2077-10-20"), false));
+            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), false));
         }
 
     }
