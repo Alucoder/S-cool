@@ -13,8 +13,8 @@ import retrofit2.Response;
 public class LoginBLL {
     boolean isSuccess = false;
 
-    public boolean checkUser(String username, String password) {
-        UserModel userModel = new UserModel(username, password);
+    public boolean checkUser(String userId, String password) {
+        UserModel userModel = new UserModel(userId, password);
         UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
         Call<TokenResponse> signUpResponseCall =userAPI.login(userModel);
 
