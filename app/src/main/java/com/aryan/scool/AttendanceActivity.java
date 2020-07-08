@@ -23,8 +23,8 @@ import retrofit2.Response;
 
 public class AttendanceActivity extends AppCompatActivity implements TakeAttendance {
 
-    RecyclerView rvAttendance;
     Button btnAttendanceDone;
+    RecyclerView rvAttendance;
     List<UserModel> students;
     int totalStudents = 0;
     public static ArrayList<AttendanceModel> attendanceList;
@@ -79,10 +79,12 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
         LocalDateTime now = LocalDateTime.now();
 
         if(status.equals("Present")){
-            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), true));
+//            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), true));
+            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", dtf.format(now), true));
         }
         else if(status.equals("Absent")){
-            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), false));
+//            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", Date.valueOf(dtf.format(now)), false));
+            attendanceList.add(new AttendanceModel(id, "5eed9d7fe368a57f6471b45b", "5eed8730275fa4e4f73b8e78", dtf.format(now), false));
         }
 
     }

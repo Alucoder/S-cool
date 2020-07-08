@@ -4,10 +4,15 @@ import java.util.Date;
 
 public class AttendanceModel {
     String _id, student, attendanceBy, classroom;
-    Date date;
+    String date;
     Boolean status;
 
-    public AttendanceModel(String _id, String student, String attendanceBy, String classroom, Date date, Boolean status) {
+    public AttendanceModel(String student, Boolean status) {
+        this.student = student;
+        this.status = status;
+    }
+
+    public AttendanceModel(String _id, String student, String attendanceBy, String classroom, String date, Boolean status) {
         this._id = _id;
         this.student = student;
         this.attendanceBy = attendanceBy;
@@ -16,7 +21,7 @@ public class AttendanceModel {
         this.status = status;
     }
 
-    public AttendanceModel(String student, String attendanceBy, String classroom, Date date, Boolean status) {
+    public AttendanceModel(String student, String attendanceBy, String classroom, String date, Boolean status) {
         this.student = student;
         this.attendanceBy = attendanceBy;
         this.classroom = classroom;
@@ -56,11 +61,11 @@ public class AttendanceModel {
         this.classroom = classroom;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

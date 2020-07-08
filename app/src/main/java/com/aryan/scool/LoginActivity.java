@@ -35,10 +35,10 @@ public class LoginActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences( "Scool", MODE_PRIVATE);
         String token = sharedPreferences.getString("token", "empty");
-        if (!token.equals("empty")){
-            RetrofitUrl.token = token;
-            startActivity(new Intent( LoginActivity.this, AttendanceActivity.class));
-        }
+//        if (!token.equals("empty")){
+////            RetrofitUrl.token = token;
+////            startActivity(new Intent( LoginActivity.this, ShowAttendanceActivity.class));
+////        }
 
 
         login.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("token", RetrofitUrl.token);
                 editor.commit();
-                startActivity(new Intent(LoginActivity.this, AttendanceActivity.class));
+                startActivity(new Intent(LoginActivity.this, ShowAttendanceActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Error!! incorrect username or password", Toast.LENGTH_SHORT).show();
