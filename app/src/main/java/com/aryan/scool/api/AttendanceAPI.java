@@ -1,4 +1,6 @@
-package com.aryan.scool;
+package com.aryan.scool.api;
+
+import com.aryan.scool.model.AttendanceModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;

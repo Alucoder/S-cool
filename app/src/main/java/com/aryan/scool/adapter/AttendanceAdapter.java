@@ -1,4 +1,4 @@
-package com.aryan.scool;
+package com.aryan.scool.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.aryan.scool.R;
+import com.aryan.scool.model.UserModel;
 
 import java.util.List;
 

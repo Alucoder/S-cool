@@ -1,14 +1,14 @@
-package com.aryan.scool;
+package com.aryan.scool.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
-import java.util.List;
+import com.aryan.scool.R;
+import com.aryan.scool.model.UserModel;
 
-import retrofit2.Call;
+import java.util.List;
 
 public class AttendanceActivity extends AppCompatActivity {
 

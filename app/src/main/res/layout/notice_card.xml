@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:layout_columnWeight="1"
+    android:layout_rowWeight="1"
+    app:cardElevation="2dp"
+    android:layout_margin="12dp"
+    android:paddingBottom="10dp"
+    app:cardCornerRadius="8dp"
+    android:alignmentMode="alignMargins"
+    android:columnOrderPreserved="false"
+    android:background="#ffffff">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/ll_dateandtime"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="15dp"
+            android:background="#C4E3FF">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="27 March"
+                android:textSize="25sp"
+                android:textAlignment="center"
+                android:fontFamily="@font/roboto"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9:30 am"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto"
+                android:layout_gravity="center"
+                android:textColor="#2E7ED8"
+                android:layout_marginTop="5dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_toRightOf="@id/ll_dateandtime"
+            android:paddingHorizontal="10dp"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Parent Meeting"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/roboto"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_bookmark_24"
+                    android:layout_marginTop="1dp"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_content1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/ll_content"
+            android:layout_toRightOf="@id/ll_dateandtime"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="community hall, kathmandu"
+                android:fontFamily="@font/roboto"
+                android:textSize="12sp"
+                android:textColor="#5A5A5A"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contrary to popular belief lorem Ipsum
+                is not a simply text. It has roots in a piece of classical Latin literature"
+                android:layout_marginTop="10dp"
+                android:textColor="#8F96BC"
+                android:paddingBottom="10dp"
+                android:fontFamily="@font/roboto"
+                android:textSize="12sp"/>
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="right"
+        android:paddingTop="10dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Academic"
+            android:background="@drawable/noticemarker"
+            android:textColor="#ffffff"
+            android:paddingTop="3dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="14dp"
+            android:paddingRight="8dp"
+            android:layout_gravity="right"
+            android:fontFamily="@font/roboto"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

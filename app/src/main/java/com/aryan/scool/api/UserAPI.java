@@ -1,9 +1,10 @@
-package com.aryan.scool;
+package com.aryan.scool.api;
+
+import com.aryan.scool.TokenResponse;
+import com.aryan.scool.model.UserModel;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;

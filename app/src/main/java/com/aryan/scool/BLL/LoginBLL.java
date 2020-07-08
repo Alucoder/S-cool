@@ -2,8 +2,8 @@ package com.aryan.scool.BLL;
 
 import com.aryan.scool.RetrofitUrl;
 import com.aryan.scool.TokenResponse;
-import com.aryan.scool.UserAPI;
-import com.aryan.scool.UserModel;
+import com.aryan.scool.api.UserAPI;
+import com.aryan.scool.model.UserModel;
 
 import java.io.IOException;
 
