@@ -1,4 +1,4 @@
-package com.aryan.scool;
+package com.aryan.scool.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,11 +11,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.aryan.scool.BLL.LoginBLL;
+import com.aryan.scool.R;
+import com.aryan.scool.Helper.RetrofitUrl;
 import com.aryan.scool.strictmode.StrictModeClass;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -91,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("token", RetrofitUrl.token);
                 editor.commit();
-                startActivity(new Intent(LoginActivity.this, ShowAttendanceActivity.class));
+                startActivity(new Intent(LoginActivity.this, AttendanceActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Error!! incorrect username or password", Toast.LENGTH_SHORT).show();

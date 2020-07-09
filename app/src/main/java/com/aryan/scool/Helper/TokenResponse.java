@@ -1,4 +1,4 @@
-package com.aryan.scool;
+package com.aryan.scool.Helper;
 
 public class TokenResponse {
     private String status;

@@ -1,4 +1,4 @@
-package com.aryan.scool;
+package com.aryan.scool.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,14 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.aryan.scool.Activities.AttendanceActivity;
+import com.aryan.scool.R;
+import com.aryan.scool.Interfaces.TakeAttendance;
+import com.aryan.scool.Models.UserModel;
 
 import java.util.List;
 

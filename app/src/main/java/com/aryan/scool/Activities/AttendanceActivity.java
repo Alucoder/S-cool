@@ -1,17 +1,26 @@
-package com.aryan.scool;
+package com.aryan.scool.Activities;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import java.sql.Date;
+import com.aryan.scool.Interfaces.AttendanceAPI;
+import com.aryan.scool.Adapters.AttendanceAdapter;
+import com.aryan.scool.Models.AttendanceModel;
+import com.aryan.scool.R;
+import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Interfaces.TakeAttendance;
+import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.UserModel;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -23,7 +32,7 @@ import retrofit2.Response;
 
 public class AttendanceActivity extends AppCompatActivity implements TakeAttendance {
 
-    Button btnAttendanceDone;
+    Button btnAttendanceDone, btnView;
     RecyclerView rvAttendance;
     List<UserModel> students;
     int totalStudents = 0;
@@ -36,6 +45,7 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
 
         rvAttendance = findViewById(R.id.attendanceRV);
         btnAttendanceDone = findViewById(R.id.btnAttendanceDone);
+        btnView = findViewById(R.id.btnAttendanceView);
         getStudents();
         attendanceList = new ArrayList<>();
 
@@ -46,7 +56,13 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
                 completeAttendance();
             }
         });
-
+        btnView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AttendanceActivity.this, ShowAttendanceActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void getStudents() {
