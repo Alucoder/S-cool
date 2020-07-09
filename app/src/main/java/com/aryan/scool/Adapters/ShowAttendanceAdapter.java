@@ -1,16 +1,19 @@
-package com.aryan.scool;
+package com.aryan.scool.Adapters;
 
-import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.aryan.scool.Interfaces.AttendanceAPI;
+import com.aryan.scool.Models.AttendanceModel;
+import com.aryan.scool.R;
+import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Models.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -61,7 +64,10 @@ public class ShowAttendanceAdapter extends RecyclerView.Adapter<ShowAttendanceAd
                     if(presentList.size() > 0)
                     {
                         holder.tvSAttendDays.setText(presentList.size() + "");
-                        holder.tvSAttendPer.setText(presentList.size() / attendanceList.size() * 100 + "%");
+                        holder.tvSAttendPer.setText((presentList.size() * 100) / attendanceList.size()  + "%");
+                        if((presentList.size() * 100) / attendanceList.size() < 80){
+                            holder.tvSAttendPer.setTextColor(Color.parseColor("#D31221"));
+                        }
                     }
 
                     else{

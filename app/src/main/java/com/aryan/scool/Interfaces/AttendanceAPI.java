@@ -1,4 +1,6 @@
-package com.aryan.scool;
+package com.aryan.scool.Interfaces;
+
+import com.aryan.scool.Models.AttendanceModel;
 
 import java.util.List;
 

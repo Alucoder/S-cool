@@ -15,16 +15,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ShowAttendanceActivity"></activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.ShowAttendanceActivity"></activity>
+        <activity android:name=".Activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AttendanceActivity" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Activities.AttendanceActivity" />
+        <activity android:name=".Activities.MainActivity"></activity>
     </application>
 
 </manifest>

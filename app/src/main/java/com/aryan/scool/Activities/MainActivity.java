@@ -1,8 +1,10 @@
-package com.aryan.scool;
+package com.aryan.scool.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.aryan.scool.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,10 +1,16 @@
-package com.aryan.scool;
+package com.aryan.scool.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.aryan.scool.R;
+import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Adapters.ShowAttendanceAdapter;
+import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.UserModel;
 
 import java.util.List;
 

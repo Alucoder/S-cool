@@ -1,4 +1,4 @@
-package com.aryan.scool;
+package com.aryan.scool.Models;
 
 import java.util.Date;
 
