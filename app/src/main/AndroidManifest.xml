@@ -15,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Activities.ResultActivity"></activity>
         <activity android:name=".Activities.NoticeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,9 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.ShowAttendanceActivity" />
-        <activity android:name=".Activities.LoginActivity">
-
-        </activity>
+        <activity android:name=".Activities.LoginActivity"></activity>
         <activity android:name=".Activities.AttendanceActivity" />
         <activity android:name=".Activities.MainActivity" />
     </application>
