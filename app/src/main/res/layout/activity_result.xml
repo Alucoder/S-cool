@@ -56,6 +56,29 @@
         app:layout_constraintTop_toTopOf="@+id/tvExamType"
         app:layout_constraintBottom_toBottomOf="@+id/tvExamType"/>
 
+    <TextView
+        android:id="@+id/tvFullMarks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="35dp"
+        android:text="Full Marks: "
+        app:layout_constraintStart_toEndOf="@+id/tvClassroom"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etFullMarks"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:singleLine="true"
+        android:maxLength="3"
+        android:text="100"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/tvFullMarks"
+        app:layout_constraintTop_toTopOf="@+id/tvFullMarks"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFullMarks"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvResult"
         android:layout_width="match_parent"

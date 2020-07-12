@@ -17,9 +17,8 @@ public class ResultModel {
         this.student = student;
     }
 
-    public ResultModel(String examType, String subject, String classroom, int fullMarks, int rank, float marks, UserModel student) {
+    public ResultModel(String examType, String classroom, int fullMarks, int rank, float marks, UserModel student) {
         this.examType = examType;
-        this.subject = subject;
         this.classroom = classroom;
         this.fullMarks = fullMarks;
         this.rank = rank;

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aryan.scool.Activities.ResultActivity;
 import com.aryan.scool.Interfaces.TakeResult;
 import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
@@ -36,10 +37,18 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ResultViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ResultViewHolder holder, int position) {
         final UserModel student = studentList.get(position);
 
         holder.tvName.setText(student.getName());
+        holder.etMarks.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(!hasFocus && holder.etMarks.getText().toString().trim() != null){
+                    takeResult.result(student, Float.parseFloat(holder.etMarks.getText().toString()));
+                }
+            }
+        });
     }
 
     @Override
@@ -56,6 +65,7 @@ public class ResultAdapter extends RecyclerView.Adapter<ResultAdapter.ResultView
             super(itemView);
             etMarks = itemView.findViewById(R.id.etMarks);
             tvName = itemView.findViewById(R.id.tvSname);
+            takeResult = new ResultActivity();
         }
     }
 }
