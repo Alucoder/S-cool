@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="wrap_content"
     android:layout_columnWeight="1"
     android:layout_rowWeight="1"
     app:cardElevation="2dp"
@@ -13,29 +13,32 @@
     app:cardCornerRadius="8dp"
     android:alignmentMode="alignMargins"
     android:columnOrderPreserved="false"
-    android:background="#ffffff">
+    android:background="@color/colorWhite">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         >
 
         <LinearLayout
             android:id="@+id/ll_dateandtime"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="10dp"
-            android:background="#C4E3FF">
+            android:paddingTop="20dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="20dp"
+            android:background="@color/colorPrimaryLight">
 
             <TextView
                 android:id="@+id/noticeDate"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:text="27 March"
-                android:textSize="25sp"
+                android:textSize="24sp"
                 android:textAlignment="center"
+                android:textColor="@color/colorContext"
                 android:fontFamily="@font/roboto"/>
 
             <TextView
@@ -43,10 +46,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="9:30 am"
-                android:textSize="15sp"
+                android:textSize="16sp"
                 android:fontFamily="@font/roboto"
                 android:layout_gravity="center"
-                android:textColor="#2E7ED8"
+                android:textColor="@color/colorPrimary"
                 android:layout_marginTop="5dp"
                 />
 
@@ -59,7 +62,7 @@
             android:orientation="vertical"
             android:layout_toRightOf="@+id/ll_dateandtime"
             android:paddingHorizontal="10dp"
-            android:paddingTop="10dp">
+            android:paddingTop="15dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -71,8 +74,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Parent Meeting"
-                    android:textColor="#000000"
+                    android:textColor="@color/colorHeading"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     android:fontFamily="@font/roboto"/>
 
                 <ImageView
@@ -80,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:src="@drawable/ic_baseline_bookmark_24"
                     android:layout_marginTop="1dp"
+                    android:layout_marginLeft="5dp"
                     />
 
             </LinearLayout>
@@ -89,32 +94,33 @@
         <LinearLayout
             android:id="@+id/ll_content1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/ll_content"
+            android:layout_marginTop="2dp"
             android:layout_toRightOf="@id/ll_dateandtime"
+            android:orientation="vertical"
             android:paddingHorizontal="10dp"
-            android:layout_marginTop="2dp">
+            android:paddingBottom="15dp">
 
             <TextView
                 android:id="@+id/venue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="community hall, kathmandu"
                 android:fontFamily="@font/roboto"
-                android:textSize="12sp"
-                android:textColor="#5A5A5A"/>
+                android:text="community hall, kathmandu"
+                android:textColor="@color/colorLightContext"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/noticedDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/roboto"
                 android:text="Contrary to popular belief lorem Ipsum
                 is not a simply text. It has roots in a piece of classical Latin literature"
-                android:layout_marginTop="10dp"
-                android:textColor="#8F96BC"
-                android:fontFamily="@font/roboto"
-                android:textSize="12sp"/>
+                android:textColor="@color/colorContext"
+                android:textSize="12sp" />
 
 
         </LinearLayout>
@@ -126,23 +132,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="right"
-        android:paddingTop="10dp">
-
-
+        android:layout_marginTop="15dp">
         <TextView
             android:id="@+id/noticeTitle"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Academic"
             android:background="@drawable/noticemarker"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorWhite"
             android:paddingTop="3dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="14dp"
-            android:paddingRight="8dp"
+            android:paddingBottom="3dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="10dp"
             android:layout_gravity="right"
             android:fontFamily="@font/roboto"/>
-
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>
