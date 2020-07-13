@@ -8,16 +8,6 @@
     tools:context=".Activities.LoginActivity"
     android:background="@color/colorPrimaryLight">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="155dp"
-        android:layout_height="155dp"
-        android:layout_marginTop="80dp"
-        android:src="@drawable/scoollogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -98,6 +88,16 @@
             android:background="#8F96BC" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="155dp"
+        android:layout_height="155dp"
+        android:layout_marginTop="84dp"
+        android:src="@drawable/scoollogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

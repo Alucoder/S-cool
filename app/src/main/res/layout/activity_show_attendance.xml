@@ -5,14 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.ShowAttendanceActivity">
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/tvattendance"
+        android:background="@color/colorTopBar">
     <TextView
         android:id="@+id/tvClassroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="Class 1A"
+        android:textColor="@color/colorHeading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,18 +26,18 @@
         android:id="@+id/tvTeacherName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="200dp"
         android:text="Kiran Rana"
+        android:textColor="@color/colorHeading"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    </LinearLayout>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/attendanceShowRV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/tvTeacherName"
+        android:layout_margin="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/tvattendance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
