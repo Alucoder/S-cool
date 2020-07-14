@@ -17,4 +17,5 @@
     <color name="colorDangerLight">#FEF5F6</color>
     <color name="colorSucessLight">#D3FEE5</color>
     <color name="colorWarning">#FCBF82</color>
+    <color name="textColor">#74778D</color>
 </resources>

@@ -34,27 +34,69 @@
             android:background="@drawable/notification" />
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/dashboard_grid"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="20dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar" />-->
+
+    <LinearLayout
         android:id="@+id/dashboard_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar" />
+        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar">
+
+        <Button
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombtndashboard"
+            android:drawableTop="@drawable/notification"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Attendance"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+
+        <Button
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombtndashboard"
+            android:drawableTop="@drawable/notification"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Result"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+
+        <Button
+            android:layout_width="125dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombtndashboard"
+            android:drawableTop="@drawable/notification"
+            android:drawablePadding="10dp"
+            android:elevation="5dp"
+            android:text="Students"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tvnotice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
         android:padding="20dp"
         android:text="Notice"
-        app:layout_constraintBottom_toTopOf="@id/dashboard_grid"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dashboard_grid"
-        app:layout_constraintVertical_bias="0.0"
         tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
