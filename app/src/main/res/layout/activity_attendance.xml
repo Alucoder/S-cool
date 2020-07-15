@@ -13,24 +13,24 @@
         tools:ignore="MissingConstraints"
         android:id="@+id/tvtitlebar"
         android:background="@color/colorTopBar">
-    <TextView
-        android:id="@+id/tvClassroom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Class 1A"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/colorHeading"/>
+        <TextView
+            android:id="@+id/tvClassroom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class 1A"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/colorHeading"/>
 
-    <TextView
-        android:id="@+id/tvTeacherName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="220dp"
-        android:text="Kiran Rana"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textColor="@color/colorHeading"/>
+        <TextView
+            android:id="@+id/tvTeacherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:text="Kiran Rana"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:textColor="@color/colorHeading"/>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -41,7 +41,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="30dp"
         android:layout_height="wrap_content" />
-
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@+id/attendanceRV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/tvbuttonwrap">
     <Button
         android:id="@+id/btnAttendanceDone"
         android:layout_width="150dp"
@@ -51,7 +60,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@color/colorPrimary"
-        android:textColor="@color/colorWhite"/>
+        android:textColor="@color/colorWhite"
+        android:layout_marginEnd="20dp"/>
 
     <Button
         android:id="@+id/btnAttendanceView"
@@ -59,5 +69,8 @@
         android:layout_height="wrap_content"
         android:text="View"
         app:layout_constraintTop_toBottomOf="@+id/attendanceRV"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorWhite"/>
+</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

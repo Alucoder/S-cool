@@ -12,6 +12,7 @@
         android:background="@color/colorWhite"
         android:orientation="horizontal"
         android:padding="30dp"
+        android:layout_marginBottom="30dp"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -24,6 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorContext"
             android:text="Hello Danil" />
 
         <View
@@ -34,79 +37,78 @@
             android:background="@drawable/notification" />
     </LinearLayout>
 
-<!--    <androidx.recyclerview.widget.RecyclerView-->
-<!--        android:id="@+id/dashboard_grid"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="20dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar" />-->
-
     <LinearLayout
-        android:id="@+id/dashboard_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar">
+        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar"
+        android:padding="30dp">
 
-        <Button
-            android:layout_width="125dp"
+        <LinearLayout
+            android:id="@+id/dashboard_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custombtndashboard"
+                android:drawableTop="@drawable/notification"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:text="Attendance"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@color/colorContext" />
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custombtndashboard"
+                android:drawableTop="@drawable/notification"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Result"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textColor="@color/colorContext" />
+
+            <Button
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custombtndashboard"
+                android:drawableTop="@drawable/notification"
+                android:drawablePadding="10dp"
+                android:elevation="5dp"
+                android:text="Students"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/colorContext" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvnotice"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custombtndashboard"
-            android:drawableTop="@drawable/notification"
-            android:drawablePadding="10dp"
-            android:elevation="5dp"
-            android:text="Attendance"
-            android:textAllCaps="false"
-            android:textColor="@color/colorContext" />
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:text="Notice"
+            android:textColor="@color/colorHeading"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_grid" />
 
-        <Button
-            android:layout_width="125dp"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotice"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/custombtndashboard"
-            android:drawableTop="@drawable/notification"
-            android:drawablePadding="10dp"
-            android:elevation="5dp"
-            android:text="Result"
-            android:textAllCaps="false"
-            android:textColor="@color/colorContext" />
-
-        <Button
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custombtndashboard"
-            android:drawableTop="@drawable/notification"
-            android:drawablePadding="10dp"
-            android:elevation="5dp"
-            android:text="Students"
-            android:textAllCaps="false"
-            android:textColor="@color/colorContext" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvnotice" />
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvnotice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
-        android:padding="20dp"
-        android:text="Notice"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dashboard_grid"
-        tools:ignore="MissingConstraints" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNotice"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvnotice" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
