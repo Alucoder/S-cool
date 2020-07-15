@@ -89,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("token", RetrofitUrl.token);
                 editor.commit();
-                startActivity(new Intent(LoginActivity.this, ResultActivity.class));
+                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
                 finish();
             } else {
                 Toast.makeText(this, "Error!! incorrect username or password", Toast.LENGTH_SHORT).show();
