@@ -5,20 +5,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.NoticeActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:orientation="horizontal"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/tvtitlebar"
+        android:background="@color/colorTopBar"
+        android:foregroundGravity="center">
 
-    <Button
-        android:id="@+id/btnGotoLogin"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:text="->"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        <TextView
+            android:id="@+id/titlebar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Class 1A"
+            android:textColor="@color/colorHeading"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnGotoLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:drawableLeft="@drawable/usericon"
+            android:background="@drawable/loginbtnbg"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvNotice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnGotoLogin" />
+        app:layout_constraintTop_toBottomOf="@+id/tvtitlebar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
