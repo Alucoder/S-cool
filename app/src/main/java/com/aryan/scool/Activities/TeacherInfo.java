@@ -37,7 +37,7 @@ public class TeacherInfo extends AppCompatActivity {
 
     public void getTeachers(){
         UserAPI teachersList = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<List<UserModel>> teacherListCall = teachersList.getStudentList();
+        Call<List<UserModel>> teacherListCall = teachersList.getTeacherList();
 
         teacherListCall.enqueue(new Callback<List<UserModel>>() {
             @Override
