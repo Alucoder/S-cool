@@ -81,9 +81,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 //                    startActivity(intent);
                 }
                 if(profile.getAdmin().equals("user")){
-                    Intent intent = new Intent(DashboardActivity.this, StudentProfileActivity.class);
+                    Intent intent = new Intent(DashboardActivity.this, StudentDashboard.class);
                     intent.putExtra("studentid", profile.get_id());
                     startActivity(intent);
+                    finish();
                 }
                 setProfile(profile);
             }
