@@ -33,8 +33,8 @@
         <View
             android:layout_width="20dp"
             android:layout_height="24dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="211dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="150dp"
             android:background="@drawable/notification" />
     </LinearLayout>
 
@@ -45,51 +45,47 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvtitlebar"
-        android:padding="30dp">
+        android:padding="30dp"
+        android:background="@drawable/dashboardbg">
 
         <LinearLayout
             android:id="@+id/dashboard_grid"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <Button
                 android:id="@+id/btnNavigateAttendance"
-                android:layout_width="110dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
-                android:drawablePadding="10dp"
-                android:elevation="5dp"
                 android:text="Attendance"
                 android:textAllCaps="false"
-                android:textStyle="bold"
+                android:drawablePadding="10dp"
                 android:textColor="@color/colorContext" />
 
             <Button
                 android:id="@+id/btnNavigateResult"
-                android:layout_width="110dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
                 android:drawablePadding="10dp"
-                android:elevation="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:text="Result"
                 android:textAllCaps="false"
-                android:textStyle="bold"
                 android:textColor="@color/colorContext" />
 
             <Button
                 android:id="@+id/btnNavigateStudents"
-                android:layout_width="110dp"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
                 android:drawablePadding="10dp"
-                android:elevation="5dp"
                 android:text="Students"
-                android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="@color/colorContext" />
 
