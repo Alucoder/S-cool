@@ -25,4 +25,9 @@ public interface UserAPI {
 
     @GET("users/profile")
     Call<UserModel> getUserProfile(@Header("Authorization")String token);
+
+    @GET("users/userteacher")
+    Call<List<UserModel>> getTeacherList();
+
+
 }
