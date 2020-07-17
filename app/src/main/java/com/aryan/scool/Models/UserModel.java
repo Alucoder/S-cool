@@ -39,6 +39,14 @@ public class UserModel {
         return fname;
     }
 
+    public String getFname() {
+        return fname;
+    }
+
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
     public void setName(String name) {
         this.fname = name;
     }
