@@ -1,6 +1,8 @@
 package com.aryan.scool.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,10 +13,14 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aryan.scool.Activities.AttendanceActivity;
+import com.aryan.scool.Activities.StudentDashboard;
+import com.aryan.scool.Activities.TeacherInfo;
+import com.aryan.scool.Dialog.Dialog_Teaceher;
 import com.aryan.scool.Helper.RetrofitUrl;
 import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
@@ -52,9 +58,27 @@ public class TeacherInfoAdapter extends RecyclerView.Adapter<TeacherInfoAdapter.
     public void onBindViewHolder(@NonNull TeacherInfoViewHolder holder, int position) {
         final UserModel teachers = teachersList.get(position);
         Mode();
-        holder.teacher_name.setText(teachers.getName());
+        holder.teacher_name.setText(teachers.getFname());
         String imagePathProfile = RetrofitUrl.imagePath + teachers.getProfile();
         Picasso.get().load(imagePathProfile).into(holder.teacher_profile);
+
+        holder.cardTeaceherLIst.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTeacehrsDialog();
+            }
+
+            private void openTeacehrsDialog() {
+                Bundle args = new Bundle();
+                args.putString("name", teachers.getFname());
+                args.putLong("phone", teachers.getPhone());
+                args.putString("email", teachers.getEmail());
+
+                Dialog_Teaceher dialog_teaceher = new Dialog_Teaceher();
+                dialog_teaceher.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "challenge dialog");
+            }
+        });
+
     }
 
     @Override

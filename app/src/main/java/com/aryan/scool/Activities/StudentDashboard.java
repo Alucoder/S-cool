@@ -2,8 +2,12 @@ package com.aryan.scool.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,6 +27,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
     ImageView imgProfile;
     UserModel user;
 
+    private static final int REQUEST_PHONE_CALL = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +50,9 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.cv_stdDash_teacher:
+                if (ContextCompat.checkSelfPermission(StudentDashboard.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(StudentDashboard.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+                }
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
                 break;
         }
