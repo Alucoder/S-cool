@@ -12,6 +12,7 @@ import retrofit2.Response;
 
 public class LoginBLL {
     boolean isSuccess = false;
+    public static String usertype = "";
 
     public boolean checkUser(String userId, String password) {
         UserModel userModel = new UserModel(userId, password);
@@ -24,6 +25,7 @@ public class LoginBLL {
                     loginResponse.body().getStatus().equals("Login success!")) {
 
                 RetrofitUrl.token += loginResponse.body().getToken();
+                usertype = loginResponse.body().getAdm();
                 isSuccess = true;
             }
         } catch (IOException e) {

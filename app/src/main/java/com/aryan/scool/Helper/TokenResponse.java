@@ -1,12 +1,12 @@
 package com.aryan.scool.Helper;
 
 public class TokenResponse {
-    private String status;
-    private String token;
+    private String status, token, adm;
 
-    public TokenResponse(String status, String token) {
+    public TokenResponse(String status, String token, String adm) {
         this.status = status;
         this.token = token;
+        this.adm = adm;
     }
 
     public String getStatus() {
@@ -23,5 +23,13 @@ public class TokenResponse {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getAdm() {
+        return adm;
+    }
+
+    public void setAdm(String adm) {
+        this.adm = adm;
     }
 }
