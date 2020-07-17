@@ -2,6 +2,7 @@ package com.aryan.scool.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,11 @@ public class TeacherInfoAdapter extends RecyclerView.Adapter<TeacherInfoAdapter.
             }
 
             private void openTeacehrsDialog() {
+                Bundle args = new Bundle();
+                args.putString("name", teachers.getFname());
+                args.putLong("phone", teachers.getPhone());
+                args.putString("email", teachers.getEmail());
+
                 Dialog_Teaceher dialog_teaceher = new Dialog_Teaceher();
                 dialog_teaceher.show(((AppCompatActivity) mContext).getSupportFragmentManager(), "challenge dialog");
             }
