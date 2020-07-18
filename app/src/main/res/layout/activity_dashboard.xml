@@ -61,7 +61,7 @@
 
             <Button
                 android:id="@+id/btnNavigateAttendance"
-                android:layout_width="100dp"
+                android:layout_width="97dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
@@ -72,20 +72,19 @@
 
             <Button
                 android:id="@+id/btnNavigateResult"
-                android:layout_width="100dp"
+                android:layout_width="97dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
                 android:drawablePadding="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginHorizontal="20dp"
                 android:text="Result"
                 android:textAllCaps="false"
                 android:textColor="@color/colorContext" />
 
             <Button
                 android:id="@+id/btnNavigateStudents"
-                android:layout_width="100dp"
+                android:layout_width="97dp"
                 android:layout_height="wrap_content"
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
