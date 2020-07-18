@@ -42,39 +42,10 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(checkValidation()) {
-//                    loginUser(id.getText().toString(), password.getText().toString());
-                    loginUser();
-//                }
+                loginUser();
             }
         });
     }
-
-//    public void loginUser(String id, String password) {
-//
-//        UserModel user = new UserModel(id, password);
-//        UserAPI usersAPI = RetrofitUrl.getInstance().create(UserAPI.class);
-//        Call<TokenResponse> usersCall = usersAPI.login(user);
-//
-//        usersCall.enqueue(new Callback<TokenResponse>() {
-//            @Override
-//            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-//                if (response.isSuccessful() && response.body().getStatus().equals("Login success!")) {
-//
-//                    RetrofitUrl.token += response.body().getToken();
-//                    Intent intent = new Intent(LoginActivity.this, AttendanceActivity.class);
-//                    startActivity(intent);
-//                    finish();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<TokenResponse> call, Throwable t) {
-//                Toast.makeText(LoginActivity.this, "Wrong input", Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//
-//    }
 
     private void loginUser() {
         if(checkValidation()) {
@@ -89,8 +60,18 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.putString("token", RetrofitUrl.token);
                 editor.commit();
-                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
-                finish();
+                if(lBll.usertype.equals("user"))
+                {
+                    startActivity(new Intent(LoginActivity.this, StudentDashboard.class));
+                    finish();
+                }
+                else if(lBll.usertype.equals("teacher")) {
+                    startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                    finish();
+                }
+                else{
+                    Toast.makeText(this, "Error login. Please try reopening the app", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(this, "Error!! incorrect username or password", Toast.LENGTH_SHORT).show();
                 id.requestFocus();

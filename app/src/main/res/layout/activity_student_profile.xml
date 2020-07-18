@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".Activities.StudentProfileActivity">
 
     <TextView
@@ -41,12 +42,12 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:layout_marginTop="100dp"
-        app:compactCalendarBackgroundColor="#ffe95451"
-        app:compactCalendarCurrentDayBackgroundColor="#B71C1C"
-        app:compactCalendarCurrentSelectedDayBackgroundColor="#E57373"
+        app:compactCalendarBackgroundColor="#fff"
+        app:compactCalendarCurrentDayBackgroundColor="#bbb"
+        app:compactCalendarCurrentSelectedDayBackgroundColor="#ccc"
         app:compactCalendarMultiEventIndicatorColor="#fff"
         app:compactCalendarTargetHeight="250dp"
-        app:compactCalendarTextColor="#fff"
+        app:compactCalendarTextColor="#111"
         app:compactCalendarTextSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -50,6 +50,7 @@ public class StudentProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userid = intent.getStringExtra("studentid");
 
+        Toast.makeText(this, "hello" + userid, Toast.LENGTH_SHORT).show();
         compactCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
         getMyAttendance();
@@ -96,6 +97,16 @@ public class StudentProfileActivity extends AppCompatActivity {
                                     .toEpochMilli();
 
                             Event ev1 = new Event(Color.GREEN, millisSinceEpoch, "Present that day");
+                            compactCalendarView.addEvent(ev1);
+                        }
+                        else if (!att.getStatus()) {
+                            String strDate = att.getDate();
+                            long millisSinceEpoch = LocalDateTime.parse(strDate, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"))
+                                    .atZone(ZoneId.systemDefault())
+                                    .toInstant()
+                                    .toEpochMilli();
+
+                            Event ev1 = new Event(Color.RED, millisSinceEpoch, "Absent that day");
                             compactCalendarView.addEvent(ev1);
                         }
                     }

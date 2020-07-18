@@ -14,35 +14,69 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
 
-public class StudentDashboard extends AppCompatActivity {
-    CardView cv_stdDash_teacher;
-    ImageView img_profile;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private static final int REQUEST_CALL = 1;
+public class StudentDashboard extends AppCompatActivity implements View.OnClickListener {
+    CardView cv_stdDash_teacher;
+    ImageView imgProfile;
+    UserModel user;
+
+    private static final int REQUEST_PHONE_CALL = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
-        img_profile = findViewById(R.id.img_dashboard_student_profile);
+        imgProfile = findViewById(R.id.stdProfile);
 
-//        if (ContextCompat.checkSelfPermission(StudentDashboard.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions(StudentDashboard.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
-//        }
-//        if(ContextCompat.checkSelfPermission(StudentDashboard.this, Manifest.permission.CALL_PHONE) !=
-//                PackageManager.PERMISSION_GRANTED) {
-//            ActivityCompat.requestPermissions( StudentDashboard.this,
-//                    new String[]{Manifest.permission.CALL_PHONE}, REQUEST_PHONE_CALL);
-//        }
+        getProfile();
+        imgProfile.setOnClickListener(this);
+        cv_stdDash_teacher.setOnClickListener(this);
+    }
 
-
-        cv_stdDash_teacher.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
+        switch(v.getId()){
+            case R.id.stdProfile:
+                Intent intent = new Intent(StudentDashboard.this, StudentProfileActivity.class);
+                intent.putExtra("studentid", user.get_id());
+                startActivity(intent);
+                break;
+            case R.id.cv_stdDash_teacher:
+                if (ContextCompat.checkSelfPermission(StudentDashboard.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(StudentDashboard.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
+                }
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
+                break;
+        }
+
+    }
+
+    public void getProfile(){
+        UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
+        Call<UserModel> usersCall = userAPI.getUserProfile(RetrofitUrl.token);
+
+        usersCall.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(StudentDashboard.this, "Error loading profile!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                user = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
+                Toast.makeText(StudentDashboard.this, "Error loading profile...", Toast.LENGTH_SHORT).show();
             }
         });
 
