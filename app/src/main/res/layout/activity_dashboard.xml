@@ -5,38 +5,43 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tvtitlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:orientation="horizontal"
         android:padding="30dp"
-        android:layout_marginBottom="30dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        >
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/user"></ImageView>
+            android:background="@drawable/user"
+            android:id="@+id/userimage"></ImageView>
 
         <TextView
             android:id="@+id/txtDashName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Hello Danil"
             android:textColor="@color/colorContext"
-            android:text="Hello Danil" />
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/userimage"
+            tools:layout_editor_absoluteY="11dp" />
 
         <View
             android:layout_width="20dp"
             android:layout_height="24dp"
             android:layout_gravity="left"
-            android:layout_marginLeft="150dp"
-            android:background="@drawable/notification" />
-    </LinearLayout>
+            android:layout_marginTop="2dp"
+            android:background="@drawable/notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -72,8 +77,8 @@
                 android:background="@drawable/custombtndashboard"
                 android:drawableTop="@drawable/notification"
                 android:drawablePadding="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
                 android:text="Result"
                 android:textAllCaps="false"
                 android:textColor="@color/colorContext" />
