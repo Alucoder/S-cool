@@ -3,14 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingBottom="12dp">
+    android:paddingHorizontal="15dp"
+    android:paddingVertical="10dp"
+    android:background="@color/colorWhite">
 
     <TextView
         android:id="@+id/tvSname"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
         android:text="Rohit Sharma"
         android:singleLine="true"
         android:textSize="20sp"
@@ -19,14 +19,17 @@
 
     <EditText
         android:id="@+id/etMarks"
-        android:layout_width="100dp"
+        android:padding="5dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:hint="80.5"
         android:inputType="numberDecimal"
         android:maxLength="4"
         android:textAlignment="center"
-        android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvSname"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSname"/>
+        app:layout_constraintBottom_toBottomOf="@+id/tvSname"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/colorTopBar"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

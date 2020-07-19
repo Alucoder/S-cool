@@ -8,15 +8,15 @@
     tools:context=".Activities.StudentDashboard"
     android:background="@drawable/dashboardbg">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/tvtitlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
         android:orientation="horizontal"
         android:padding="30dp"
-        android:layout_marginBottom="30dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        >
 
 
         <ImageView
@@ -29,19 +29,23 @@
             android:id="@+id/txtDashName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Hello Danil"
             android:textColor="@color/colorContext"
-            android:text="Hello Danil" />
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/stdProfile"
+            tools:layout_editor_absoluteY="11dp" />
 
         <View
             android:layout_width="20dp"
             android:layout_height="24dp"
             android:layout_gravity="left"
-            android:layout_marginLeft="150dp"
-            android:background="@drawable/notification" />
-    </LinearLayout>
+            android:layout_marginTop="2dp"
+            android:background="@drawable/notification"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,13 +60,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/dashboardbg">
+            android:orientation="horizontal">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="5dp"
                 android:clickable="true"
                 >
                 <LinearLayout
@@ -97,13 +100,13 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="97dp"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
+                app:cardCornerRadius="5dp"
                 android:clickable="true"
                 android:layout_marginHorizontal="20dp"
                 >
                 <LinearLayout
                     android:layout_width="wrap_content"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:layout_gravity="center_horizontal"
                     android:orientation="vertical"
                     android:layout_height="wrap_content">

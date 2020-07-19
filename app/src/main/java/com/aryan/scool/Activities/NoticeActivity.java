@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -38,11 +39,31 @@ public class NoticeActivity extends AppCompatActivity {
         rvNotice = findViewById(R.id.rvNotice);
         getNotices();
 
+        SharedPreferences sharedPreferences = getSharedPreferences( "Scool", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "Bearer ");
+        if (!token.equals("Bearer ")){
+            RetrofitUrl.token = token;
+//            loginUser(sharedPreferences.getString("userID", ""), sharedPreferences.getString("userPass", ""));
+            if(sharedPreferences.getString("userType", "").equals("user"))
+            {
+                startActivity(new Intent(NoticeActivity.this, StudentDashboard.class));
+                finish();
+            }
+            else if(sharedPreferences.getString("userType", "").equals("teacher")) {
+                startActivity(new Intent(NoticeActivity.this, DashboardActivity.class));
+                finish();
+            }
+            else{
+                Toast.makeText(this, "Error login. Please try reopening the app", Toast.LENGTH_SHORT).show();
+            }
+        }
+
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(NoticeActivity.this, LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

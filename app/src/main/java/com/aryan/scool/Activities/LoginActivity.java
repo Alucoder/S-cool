@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText id, password;
     Button login;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,35 +32,48 @@ public class LoginActivity extends AppCompatActivity {
 
         id.requestFocus();
 
-        SharedPreferences sharedPreferences = getSharedPreferences( "Scool", MODE_PRIVATE);
-        String token = sharedPreferences.getString("token", "empty");
-//        if (!token.equals("empty")){
-////            RetrofitUrl.token = token;
-////            startActivity(new Intent( LoginActivity.this, ShowAttendanceActivity.class));
-////        }
+        sharedPreferences = getSharedPreferences( "Scool", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token", "Bearer ");
+        if (!token.equals("Bearer ")){
+            RetrofitUrl.token = token;
+//            loginUser(sharedPreferences.getString("userID", ""), sharedPreferences.getString("userPass", ""));
+            if(sharedPreferences.getString("userType", "").equals("user"))
+            {
+                startActivity(new Intent(LoginActivity.this, StudentDashboard.class));
+                finish();
+            }
+            else if(sharedPreferences.getString("userType", "").equals("teacher")) {
+                startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+                finish();
+            }
+            else{
+                Toast.makeText(this, "Error login. Please try reopening the app", Toast.LENGTH_SHORT).show();
+            }
+        }
 
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loginUser();
+                loginUser(id.getText().toString(), password.getText().toString());
             }
         });
     }
 
-    private void loginUser() {
+    private void loginUser(String userID, String userPass) {
         if(checkValidation()) {
-            String userID = id.getText().toString().trim();
-            String userPass = password.getText().toString().trim();
 
             LoginBLL lBll = new LoginBLL();
             StrictModeClass.StrictMode();
 
             if (lBll.checkUser(userID, userPass)) {
-                SharedPreferences sharedPreferences = getSharedPreferences("Scool", MODE_PRIVATE);
+
+                sharedPreferences = getSharedPreferences("Scool", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.putString("userType", lBll.usertype);
                 editor.putString("token", RetrofitUrl.token);
                 editor.commit();
+
                 if(lBll.usertype.equals("user"))
                 {
                     startActivity(new Intent(LoginActivity.this, StudentDashboard.class));
@@ -90,4 +104,8 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    public void deleteSavedUser(){
+        sharedPreferences = getSharedPreferences("Scool", 0);
+        sharedPreferences.edit().clear().commit();
+    }
 }
