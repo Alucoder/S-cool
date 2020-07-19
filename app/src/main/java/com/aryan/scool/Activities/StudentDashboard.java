@@ -27,15 +27,15 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
     CardView cv_stdDash_teacher;
     ImageView imgProfile;
     UserModel user;
-
     private static final int REQUEST_PHONE_CALL = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
-        imgProfile = findViewById(R.id.stdProfile);
+        imgProfile = findViewById(R.id.img_dashboard_student_profile);
 
         getProfile();
         imgProfile.setOnClickListener(this);
@@ -45,15 +45,12 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         switch(v.getId()){
-            case R.id.stdProfile:
+            case R.id.img_dashboard_student_profile:
                 Intent intent = new Intent(StudentDashboard.this, StudentProfileActivity.class);
                 intent.putExtra("studentid", user.get_id());
                 startActivity(intent);
                 break;
             case R.id.cv_stdDash_teacher:
-                if (ContextCompat.checkSelfPermission(StudentDashboard.this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(StudentDashboard.this, new String[]{Manifest.permission.CALL_PHONE},REQUEST_PHONE_CALL);
-                }
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
                 break;
         }
@@ -80,7 +77,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
             }
         });
 
-        img_profile.setOnClickListener(new View.OnClickListener() {
+        imgProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StudentDashboard.this, StudentProfileActivity.class));
@@ -88,23 +85,4 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
         });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_CALL) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                permissions();
-            } else {
-                Toast.makeText(this, "Permission DENIED", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    private void permissions() {
-
-            if (ContextCompat.checkSelfPermission(StudentDashboard.this,
-                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(StudentDashboard.this,
-                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-            }
-    }
 }

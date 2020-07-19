@@ -67,19 +67,7 @@ public class Dialog_Teaceher extends AppCompatDialogFragment {
         phone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String phno = tv_phone.getText().toString();
-                if(phno.trim().length() > 0) {
-                    if(ContextCompat.checkSelfPermission(pContext, Manifest.permission.CALL_PHONE) !=
-                            PackageManager.PERMISSION_GRANTED) {
-                        ActivityCompat.requestPermissions( pActivity,
-                                new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
-                    } else {
-                        String dial = "tel:" + phno;
-                        pContext.startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
-                    }
-                } else {
-                    Toast.makeText( pContext, "No phone number available", Toast.LENGTH_SHORT).show();
-                }
+               makeACall();
             }
         });
 
@@ -103,4 +91,30 @@ public class Dialog_Teaceher extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    private void makeACall() {
+        String number = tv_phone.getText().toString();
+        if (number.trim().length() > 0) {
+            if (ContextCompat.checkSelfPermission(pContext,
+                    Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(pActivity,
+                        new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            } else {
+                String dial = "tel:" + number;
+                startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+            }
+        } else {
+            Toast.makeText(pContext, "No phone number found", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makeACall();
+            } else {
+                Toast.makeText(pContext, "Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
 }
