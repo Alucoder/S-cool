@@ -1,15 +1,10 @@
 package com.aryan.scool.Activities;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,9 +20,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StudentDashboard extends AppCompatActivity implements View.OnClickListener {
-    CardView cv_stdDash_teacher;
+    CardView cv_sd_subject, cv_stdDash_teacher;
     ImageView imgProfile;
-    UserModel user;
+    public static UserModel user;
     ImageView iv;
 
     private static final int REQUEST_PHONE_CALL = 1;
@@ -37,12 +32,14 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_dashboard);
 
+        cv_sd_subject = findViewById(R.id.cv_sd_subject);
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
         iv = findViewById(R.id.logout);
         imgProfile = findViewById(R.id.img_dashboard_student_profile);
 
         getProfile();
         imgProfile.setOnClickListener(this);
+        cv_sd_subject.setOnClickListener(this);
         cv_stdDash_teacher.setOnClickListener(this);
         iv.setOnClickListener(this);
     }
@@ -55,6 +52,9 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 intent.putExtra("studentid", user.get_id());
                 startActivity(intent);
                 break;
+            case R.id.cv_sd_subject:
+                startActivity(new Intent(StudentDashboard.this, Subject.class));
+                break;
             case R.id.cv_stdDash_teacher:
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
                 break;
@@ -63,9 +63,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 RetrofitUrl.token = "Bearer ";
                 startActivity(new Intent(StudentDashboard.this, LoginActivity.class));
                 finish();
-
         }
-
     }
 
     public void getProfile(){
@@ -100,4 +98,6 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
         SharedPreferences sharedPreferences = getSharedPreferences("Scool", 0);
         sharedPreferences.edit().clear().commit();
     }
+
+
 }
