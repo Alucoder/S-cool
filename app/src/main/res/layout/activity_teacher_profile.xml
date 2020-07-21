@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.StudentProfileActivity"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/tvtitlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="20dp"
+        tools:ignore="MissingConstraints"
+        android:background="@color/colorWhite"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="20dp"
+        >
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/user"
+            android:id="@+id/txtTeacherImage"/>
+
+        <TextView
+            android:id="@+id/txtTeacherName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rohit shrma"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorHeading"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:id="@+id/txtTeacherId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="1024512"
+            android:textColor="@color/colorLightContext"
+            />
+        <TextView
+            android:id="@+id/txtTeacherEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="rohit@gmail.com"
+            android:textColor="@color/colorLightContext"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toEndOf="@+id/lableemail"
+            tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/txtTeacherPhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9856825413"
+            android:textColor="@color/colorLightContext"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/lableemail"
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="10dp"/>
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
+
