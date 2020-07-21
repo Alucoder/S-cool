@@ -15,27 +15,29 @@
         android:background="@color/colorWhite"
         android:orientation="horizontal"
         android:padding="30dp"
-        tools:ignore="MissingConstraints"
-        >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <ImageView
-            android:id="@+id/stdProfile"
+            android:id="@+id/img_dashboard_student_profile"
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:background="@drawable/user"/>
+            android:background="@drawable/user"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtDashName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
             android:text="Hello Danil"
             android:textColor="@color/colorContext"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@+id/stdProfile"
-            tools:layout_editor_absoluteY="11dp" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_dashboard_student_profile"
+            app:layout_constraintLeft_toRightOf="@+id/img_dashboard_student_profile"
+            app:layout_constraintTop_toTopOf="@+id/img_dashboard_student_profile" />
 
         <ImageView
             android:id="@+id/logout"
