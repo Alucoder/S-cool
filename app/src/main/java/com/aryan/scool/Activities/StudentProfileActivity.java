@@ -13,7 +13,9 @@ import android.widget.Toast;
 
 import com.aryan.scool.Helper.RetrofitUrl;
 import com.aryan.scool.Interfaces.AttendanceAPI;
+import com.aryan.scool.Interfaces.UserAPI;
 import com.aryan.scool.Models.AttendanceModel;
+import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
@@ -32,12 +34,14 @@ import java.util.Locale;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Url;
 
 public class StudentProfileActivity extends AppCompatActivity {
 
     String userid;
     CompactCalendarView compactCalendarView;
     TextView txtMonth, txtYear;
+    public static UserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +119,23 @@ public class StudentProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<AttendanceModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getMyProfile() {
+        UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
+        Call<UserModel> userModelCall = userAPI.getUserProfile(RetrofitUrl.token);
+
+        userModelCall.enqueue(new Callback<UserModel>() {
+            @Override
+            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                userModel = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<UserModel> call, Throwable t) {
 
             }
         });
