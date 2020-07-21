@@ -33,7 +33,8 @@
             app:layout_constraintLeft_toRightOf="@+id/userimage"
             tools:layout_editor_absoluteY="11dp" />
 
-        <View
+        <ImageView
+            android:id="@+id/logout"
             android:layout_width="20dp"
             android:layout_height="24dp"
             android:layout_gravity="left"

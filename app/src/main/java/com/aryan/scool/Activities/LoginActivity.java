@@ -104,8 +104,5 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    public void deleteSavedUser(){
-        sharedPreferences = getSharedPreferences("Scool", 0);
-        sharedPreferences.edit().clear().commit();
-    }
+
 }

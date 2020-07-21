@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     TextView txtDashName;
     Button btnNavigateAttendance, btnNavigateResult, btnNavigateStudents;
     RecyclerView rvNoticeDash;
+    ImageView img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         txtDashName = findViewById(R.id.txtDashName);
         rvNoticeDash = findViewById(R.id.rvNotice);
 
+        img = findViewById(R.id.logout);
+        img.setOnClickListener(this);
         btnNavigateAttendance.setOnClickListener(this);
         btnNavigateResult.setOnClickListener(this);
         btnNavigateStudents.setOnClickListener(this);
@@ -61,6 +66,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 //                intent = new Intent(DashboardActivity.this, StudentsActivity.class);
 //                startActivity(intent);
 //                break;
+            case R.id.logout:
+                deleteSavedUser();
+                RetrofitUrl.token = "Bearer ";
+                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+                finish();
+
         }
     }
 
@@ -88,5 +99,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     public void setProfile(UserModel profile) {
         txtDashName.setText(profile.getName());
+    }
+
+    public void deleteSavedUser(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Scool", 0);
+        sharedPreferences.edit().clear().commit();
     }
 }

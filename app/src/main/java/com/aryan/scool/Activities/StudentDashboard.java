@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -26,6 +27,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
     CardView cv_stdDash_teacher;
     ImageView imgProfile;
     UserModel user;
+    ImageView iv;
 
     private static final int REQUEST_PHONE_CALL = 1;
     @Override
@@ -35,10 +37,12 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
 
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
         imgProfile = findViewById(R.id.stdProfile);
+        iv = findViewById(R.id.logout);
 
         getProfile();
         imgProfile.setOnClickListener(this);
         cv_stdDash_teacher.setOnClickListener(this);
+        iv.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +59,12 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 }
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
                 break;
+            case R.id.logout:
+                deleteSavedUser();
+                RetrofitUrl.token = "Bearer ";
+                startActivity(new Intent(StudentDashboard.this, LoginActivity.class));
+                finish();
+
         }
 
     }
@@ -78,5 +88,10 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 Toast.makeText(StudentDashboard.this, "Error loading profile...", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void deleteSavedUser(){
+        SharedPreferences sharedPreferences = getSharedPreferences("Scool", 0);
+        sharedPreferences.edit().clear().commit();
     }
 }
