@@ -24,10 +24,10 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:background="@drawable/user"
-            android:id="@+id/txtStudentImage"/>
+            android:id="@+id/img_StudentImage"/>
 
         <TextView
-            android:id="@+id/txtStudentName"
+            android:id="@+id/tvStudentName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Rohit shrma"
@@ -53,6 +53,7 @@
             android:layout_marginTop="10dp"
             app:layout_constraintStart_toEndOf="@+id/lableemail"
             tools:ignore="MissingConstraints" />
+
         <TextView
             android:id="@+id/txtStudentPhoneNumber"
             android:layout_width="wrap_content"

@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -38,9 +40,10 @@ import retrofit2.http.Url;
 
 public class StudentProfileActivity extends AppCompatActivity {
 
+    ImageView imgProfile;
     String userid;
     CompactCalendarView compactCalendarView;
-    TextView txtMonth, txtYear;
+    TextView userName, userID, userEmail, userPhone, txtMonth, txtYear;
     public static UserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,12 @@ public class StudentProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_profile);
 
         compactCalendarView = findViewById(R.id.compactcalendar_view);
+
+        userName = findViewById(R.id.tvStudentName);
+        userID = findViewById(R.id.txtStudentId);
+        userEmail = findViewById(R.id.txtStudentEmail);
+        userPhone = findViewById(R.id.txtStudentPhoneNumber);
+
         txtMonth = findViewById(R.id.txtCalMonth);
         txtYear = findViewById(R.id.txtCalYear);
 
@@ -57,6 +66,7 @@ public class StudentProfileActivity extends AppCompatActivity {
         Toast.makeText(this, "hello" + userid, Toast.LENGTH_SHORT).show();
         compactCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
+        getMyProfile();
         getMyAttendance();
 
 
@@ -80,6 +90,13 @@ public class StudentProfileActivity extends AppCompatActivity {
 //                Toast.makeText(StudentProfileActivity.this, "Month was scrolled to: " + firstDayOfNewMonth, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void MyProfile() {
+        userName.setText(StudentDashboard.user.getFname());
+        userID.setText(StudentDashboard.user.getUserid());
+        userEmail.setText(StudentDashboard.user.getEmail());
+        userPhone.setText("" + StudentDashboard.user.getPhone());
     }
 
     public void getMyAttendance(){
@@ -126,12 +143,26 @@ public class StudentProfileActivity extends AppCompatActivity {
 
     public void getMyProfile() {
         UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<UserModel> userModelCall = userAPI.getUserProfile(RetrofitUrl.token);
+        final Call<UserModel> userModelCall = userAPI.getUserProfile(RetrofitUrl.token);
 
         userModelCall.enqueue(new Callback<UserModel>() {
             @Override
             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                 userModel = response.body();
+                userName.setText(userModel.getFname());
+                userID.setText(userModel.getUserid());
+                userEmail.setText(userModel .getEmail());
+                userPhone.setText("" + userModel.getPhone());
+
+                String imgPath = RetrofitUrl.imagePath + response.body().getProfile();
+
+                ImageView profile = findViewById(R.id.img_StudentImage);
+                try{
+                    Picasso.get().load(imgPath) .into(profile);
+
+                }catch (Exception e){
+                    Picasso.get().load(R.drawable.usericon).into(profile);
+                }
             }
 
             @Override
