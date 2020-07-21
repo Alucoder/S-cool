@@ -3,10 +3,10 @@ package com.aryan.scool.Models;
 public class SubjectModel {
     private String subName;
     private String subjectDetail;
-    private ClassModel classroom;
-    private UserModel teacher;
+    private String classroom;
+    private String teacher;
 
-    public SubjectModel(String subName, String subjectDetail, ClassModel classroom, UserModel teacher) {
+    public SubjectModel(String subName, String subjectDetail, String classroom, String teacher) {
         this.subName = subName;
         this.subjectDetail = subjectDetail;
         this.classroom = classroom;
@@ -29,19 +29,19 @@ public class SubjectModel {
         this.subjectDetail = subjectDetail;
     }
 
-    public ClassModel getClassroom() {
+    public String getClassroom() {
         return classroom;
     }
 
-    public void setClassroom(ClassModel classroom) {
+    public void setClassroom(String classroom) {
         this.classroom = classroom;
     }
 
-    public UserModel getTeacher() {
+    public String getTeacher() {
         return teacher;
     }
 
-    public void setTeacher(UserModel teacher) {
+    public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
 }
