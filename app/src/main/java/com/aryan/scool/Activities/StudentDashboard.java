@@ -8,12 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aryan.scool.Helper.RetrofitUrl;
 import com.aryan.scool.Interfaces.UserAPI;
 import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
+import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +24,7 @@ import retrofit2.Response;
 public class StudentDashboard extends AppCompatActivity implements View.OnClickListener {
     CardView cv_sd_subject, cv_stdDash_teacher;
     ImageView imgProfile;
+    TextView txtDashName;
     public static UserModel user;
     ImageView iv;
 
@@ -35,6 +38,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
         cv_sd_subject = findViewById(R.id.cv_sd_subject);
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
         iv = findViewById(R.id.logout);
+        txtDashName = findViewById(R.id.txtDashName);
         imgProfile = findViewById(R.id.img_dashboard_student_profile);
 
         getProfile();
@@ -78,6 +82,9 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                     return;
                 }
                 user = response.body();
+                String imgPath = RetrofitUrl.imagePath + response.body().getProfile();
+                Picasso.get().load(imgPath).into(imgProfile);
+                txtDashName.setText(user.getName());
             }
 
             @Override
