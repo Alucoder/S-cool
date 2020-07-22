@@ -36,7 +36,7 @@ public class Subject extends AppCompatActivity {
 
     private void getMySubjects() {
         SubjectAPI subjectAPI = RetrofitUrl.getInstance().create(SubjectAPI.class);
-        Call<List<SubjectModel>> listCallSubject = subjectAPI.getMySubject(RetrofitUrl.token, StudentDashboard.user.getClassroom());
+        Call<List<SubjectModel>> listCallSubject = subjectAPI.getMySubject(RetrofitUrl.token, studentDashboard.user.getClassroom());
 
        listCallSubject.enqueue(new Callback<List<SubjectModel>>() {
            @Override

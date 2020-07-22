@@ -62,10 +62,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 intent = new Intent(DashboardActivity.this, ResultActivity.class);
                 startActivity(intent);
                 break;
-//            case R.id.btnNavigateStudents:
-//                intent = new Intent(DashboardActivity.this, StudentsActivity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.btnNavigateStudents:
+                intent = new Intent(DashboardActivity.this, MyClassListActivity.class);
+                startActivity(intent);
+                break;
             case R.id.logout:
                 deleteSavedUser();
                 RetrofitUrl.token = "Bearer ";
