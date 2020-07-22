@@ -63,7 +63,6 @@ public class StudentProfileActivity extends AppCompatActivity {
         Intent intent = getIntent();
         userid = intent.getStringExtra("studentid");
 
-        Toast.makeText(this, "hello" + userid, Toast.LENGTH_SHORT).show();
         compactCalendarView.setFirstDayOfWeek(Calendar.SUNDAY);
 
         getMyProfile();
