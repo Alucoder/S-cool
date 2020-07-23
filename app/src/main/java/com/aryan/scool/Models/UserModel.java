@@ -1,19 +1,27 @@
 package com.aryan.scool.Models;
 
 import java.util.Date;
+import java.util.List;
 
 public class UserModel {
 
     String _id, fname, userid, classroom, password, email, profile, parentName, admin;
     Date dob;
-    long phone;
+    String phone;
+    List<Achievements> achievements;
+
 
     public UserModel(String userid, String password) {
         this.userid = userid;
         this.password = password;
     }
 
-    public UserModel(String _id, String name, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, long phone) {
+
+    public UserModel(List<Achievements> achievements) {
+        this.achievements = achievements;
+    }
+
+    public UserModel(String _id, String name, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, String phone) {
         this._id = _id;
         this.fname = name;
         this.userid = userid;
@@ -25,6 +33,21 @@ public class UserModel {
         this.admin = admin;
         this.dob = dob;
         this.phone = phone;
+    }
+
+    public UserModel(String _id, String fname, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, String phone, List<Achievements> achievements) {
+        this._id = _id;
+        this.fname = fname;
+        this.userid = userid;
+        this.classroom = classroom;
+        this.password = password;
+        this.email = email;
+        this.profile = profile;
+        this.parentName = parentName;
+        this.admin = admin;
+        this.dob = dob;
+        this.phone = phone;
+        this.achievements = achievements;
     }
 
     public String get_id() {
@@ -116,11 +139,19 @@ public class UserModel {
         this.dob = dob;
     }
 
-    public long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<Achievements> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievements> achievements) {
+        this.achievements = achievements;
     }
 }

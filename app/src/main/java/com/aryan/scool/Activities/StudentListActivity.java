@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.aryan.scool.Adapters.StudentListAdapter;
 import com.aryan.scool.Adapters.TeacherInfoAdapter;
 import com.aryan.scool.Helper.RetrofitUrl;
 import com.aryan.scool.Interfaces.UserAPI;
@@ -45,7 +46,7 @@ public class StudentListActivity extends AppCompatActivity {
                     return;
                 }
                 studentsList = response.body();
-                TeacherInfoAdapter adapter = new TeacherInfoAdapter(studentsList, StudentListActivity.this);
+                StudentListAdapter adapter = new StudentListAdapter(studentsList, StudentListActivity.this);
                 rvStudents.setAdapter(adapter);
                 rvStudents.setLayoutManager(new LinearLayoutManager(StudentListActivity.this));
             }

@@ -46,7 +46,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_margin="10dp"
-        android:paddingBottom="150dp"
+        android:paddingBottom="200dp"
         android:layout_height="wrap_content" />
 
     <LinearLayout

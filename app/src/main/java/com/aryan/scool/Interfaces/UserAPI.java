@@ -21,7 +21,7 @@ public interface UserAPI {
     Call<List<UserModel>> getStudentList();
 
     @GET("users/students/{id}")
-    Call<UserModel> getSelectedStudent(@Path("id") String _id);
+    Call<UserModel> getSelectedStudent(@Header("Authorization")String token, @Path("id") String _id);
 
     @GET("users/profile")
     Call<UserModel> getUserProfile(@Header("Authorization")String token);

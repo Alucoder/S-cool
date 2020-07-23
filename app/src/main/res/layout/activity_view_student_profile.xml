@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".Activities.ViewStudentProfileActivity">
+
+    <ImageView
+        android:id="@+id/imgViewStudProfile"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:background="@drawable/user"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvViewStudentName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rohit shrma"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorHeading"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgViewStudProfile"/>
+
+    <TextView
+        android:id="@+id/tvViewStudentId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="1024512"
+        android:textColor="@color/colorLightContext"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvViewStudentName"/>
+
+    <TextView
+        android:id="@+id/tvViewStudentEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="rohit@gmail.com"
+        android:textColor="@color/colorLightContext"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvViewStudentId"/>
+
+    <TextView
+        android:id="@+id/tvViewStudentPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="9856825413"
+        android:textColor="@color/colorLightContext"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvViewStudentEmail"/>
+
+    <TextView
+        android:id="@+id/tvViewRecAchievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Received Achievements"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvViewStudentPhoneNumber"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvRecAchievements"
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvViewRecAchievements"/>
+
+    <TextView
+        android:id="@+id/tvNoAchievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No achievements gained"
+        android:visibility="invisible"
+        android:textColor="#E31717"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvRecAchievements"/>
+
+
+    <TextView
+        android:id="@+id/tvViewAllAchievements"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Achievements"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNoAchievements"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAchievements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvViewAllAchievements"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

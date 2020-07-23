@@ -58,12 +58,10 @@
             android:id="@+id/txtStudentPhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="9856825413"
             android:textColor="@color/colorLightContext"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/lableemail"
-            tools:ignore="MissingConstraints"
-            android:layout_marginTop="10dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
 
