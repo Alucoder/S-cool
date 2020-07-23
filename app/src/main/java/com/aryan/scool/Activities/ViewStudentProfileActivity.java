@@ -58,7 +58,6 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
 
         getMyProfile();
         loadAchievements();
-        refresh(1000);
 
     }
 
@@ -86,8 +85,8 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
 
                 if(userModel.getAchievements() != null){
                     getAchievement(userModel);
-
                 }
+                refresh(1000);
 
             }
 
@@ -172,7 +171,6 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
                 getMyProfile();
             }
         };
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
         handler.postDelayed(runnable, milliseconds);
     }
 }
