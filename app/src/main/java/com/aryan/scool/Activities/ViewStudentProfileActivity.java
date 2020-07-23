@@ -2,9 +2,11 @@ package com.aryan.scool.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -32,6 +34,9 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
     String stud_id;
     RecyclerView rvViewAllAchievements;
 
+    ImageView rvRecAchievements;
+    TextView tvRecTitle, tvRecAchievementDesc;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +52,13 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
         tvNoAchievements = findViewById(R.id.tvNoAchievements);
         rvViewAllAchievements = findViewById(R.id.rvAchievements);
 
+        rvRecAchievements = findViewById(R.id.rvRecAchievements);
+        tvRecTitle = findViewById(R.id.tvRecTitle);
+        tvRecAchievementDesc = findViewById(R.id.tvRecAchievementDesc);
+
         getMyProfile();
-        loadStudentAchievements();
         loadAchievements();
+        refresh(1000);
 
     }
 
@@ -74,6 +83,12 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
                 }catch (Exception e){
                     Picasso.get().load(R.drawable.usericon).into(image);
                 }
+
+                if(userModel.getAchievements() != null){
+                    getAchievement(userModel);
+
+                }
+
             }
 
             @Override
@@ -83,30 +98,50 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void loadStudentAchievements(){
+    public void getAchievement(UserModel user){
         AchievementAPI achievementAPI = RetrofitUrl.getInstance().create(AchievementAPI.class);
-        Call<List<Achievements>> achievementCall = achievementAPI.getMyAchievements(RetrofitUrl.token, stud_id);
+        Call<Achievements> achievementCall = achievementAPI.getMyAchievements(RetrofitUrl.token, user.getAchievements());
 
-        achievementCall.enqueue(new Callback<List<Achievements>>() {
+        achievementCall.enqueue(new Callback<Achievements>() {
             @Override
-            public void onResponse(Call<List<Achievements>> call, Response<List<Achievements>> response) {
-                if(response.body() != null) {
-                    List<Achievements> achievements = response.body();
-                    AchievementAdapter adapter = new AchievementAdapter(achievements);
-                    rvViewAllAchievements.setAdapter(adapter);
-                    rvViewAllAchievements.setLayoutManager(new GridLayoutManager(ViewStudentProfileActivity.this, 3));
-                }
-                else{
-                    tvNoAchievements.setVisibility(View.VISIBLE);
-                }
+            public void onResponse(Call<Achievements> call, Response<Achievements> response) {
+                String imgPath = RetrofitUrl.imagePath + response.body().getBadge();
+                Picasso.get().load(imgPath) .into(rvRecAchievements);
+                tvRecTitle.setText(response.body().getAchievement());
+                tvRecAchievementDesc.setText(response.body().getRemarks());
             }
 
             @Override
-            public void onFailure(Call<List<Achievements>> call, Throwable t) {
+            public void onFailure(Call<Achievements> call, Throwable t) {
 
             }
         });
     }
+
+//    public void loadStudentAchievements(){
+//        AchievementAPI achievementAPI = RetrofitUrl.getInstance().create(AchievementAPI.class);
+//        Call<List<Achievements>> achievementCall = achievementAPI.getMyAchievements(RetrofitUrl.token, stud_id);
+//
+//        achievementCall.enqueue(new Callback<List<Achievements>>() {
+//            @Override
+//            public void onResponse(Call<List<Achievements>> call, Response<List<Achievements>> response) {
+//                if(response.body() != null) {
+//                    List<Achievements> achievements = response.body();
+//                    AchievementAdapter adapter = new AchievementAdapter(achievements, stud_id);
+//                    rvViewAllAchievements.setAdapter(adapter);
+//                    rvViewAllAchievements.setLayoutManager(new GridLayoutManager(ViewStudentProfileActivity.this, 3));
+//                }
+//                else{
+//                    tvNoAchievements.setVisibility(View.VISIBLE);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Achievements>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
     public void loadAchievements(){
         AchievementAPI achievementAPI = RetrofitUrl.getInstance().create(AchievementAPI.class);
@@ -116,7 +151,7 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Achievements>> call, Response<List<Achievements>> response) {
                 List<Achievements> achievements = response.body();
-                AchievementAdapter adapter = new AchievementAdapter(achievements);
+                AchievementAdapter adapter = new AchievementAdapter(achievements, stud_id);
                 rvViewAllAchievements.setAdapter(adapter);
                 rvViewAllAchievements.setLayoutManager(new GridLayoutManager(ViewStudentProfileActivity.this, 3));
 
@@ -127,5 +162,17 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void refresh(int milliseconds){
+        final Handler handler = new Handler();
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                getMyProfile();
+            }
+        };
+        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+        handler.postDelayed(runnable, milliseconds);
     }
 }

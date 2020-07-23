@@ -5,10 +5,9 @@ import java.util.List;
 
 public class UserModel {
 
-    String _id, fname, userid, classroom, password, email, profile, parentName, admin;
+    String _id, fname, userid, classroom, password, email, profile, parentName, admin, achievement;
     Date dob;
     String phone;
-    List<Achievements> achievements;
 
 
     public UserModel(String userid, String password) {
@@ -17,8 +16,8 @@ public class UserModel {
     }
 
 
-    public UserModel(List<Achievements> achievements) {
-        this.achievements = achievements;
+    public UserModel(String achievements) {
+        this.achievement = achievements;
     }
 
     public UserModel(String _id, String name, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, String phone) {
@@ -35,7 +34,7 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public UserModel(String _id, String fname, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, String phone, List<Achievements> achievements) {
+    public UserModel(String _id, String fname, String userid, String classroom, String password, String email, String profile, String parentName, String admin, Date dob, String phone, String achievements) {
         this._id = _id;
         this.fname = fname;
         this.userid = userid;
@@ -47,7 +46,7 @@ public class UserModel {
         this.admin = admin;
         this.dob = dob;
         this.phone = phone;
-        this.achievements = achievements;
+        this.achievement = achievements;
     }
 
     public String get_id() {
@@ -147,11 +146,11 @@ public class UserModel {
         this.phone = phone;
     }
 
-    public List<Achievements> getAchievements() {
-        return achievements;
+    public String getAchievements() {
+        return achievement;
     }
 
-    public void setAchievements(List<Achievements> achievements) {
-        this.achievements = achievements;
+    public void setAchievements(String achievements) {
+        this.achievement = achievements;
     }
 }

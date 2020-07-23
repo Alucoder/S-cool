@@ -63,19 +63,44 @@
         android:id="@+id/tvViewRecAchievements"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Received Achievements"
+        android:text="Received Achievement"
         android:textStyle="bold"
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvViewStudentPhoneNumber"/>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <ImageView
         android:id="@+id/rvRecAchievements"
         android:paddingTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvViewRecAchievements"/>
+
+    <TextView
+        android:id="@+id/tvRecTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rvRecAchievements"
+        app:layout_constraintStart_toEndOf="@+id/rvRecAchievements"
+        app:layout_constraintTop_toTopOf="@+id/rvRecAchievements" />
+
+    <TextView
+        android:id="@+id/tvRecAchievementDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        app:layout_constraintBottom_toBottomOf="@+id/rvRecAchievements"
+        app:layout_constraintStart_toEndOf="@+id/tvRecTitle"
+        app:layout_constraintTop_toTopOf="@+id/rvRecAchievements" />
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvRecAchievements"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvViewRecAchievements"/>-->
 
     <TextView
         android:id="@+id/tvNoAchievements"

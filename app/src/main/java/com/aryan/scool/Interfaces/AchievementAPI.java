@@ -18,6 +18,6 @@ public interface AchievementAPI {
     Call<List<Achievements>> getTotalAchievements(@Header("Authorization")String token);
 
     @GET("achievements/{id}")
-    Call<List<Achievements>> getMyAchievements(@Header("Authorization")String token, @Path("id") String id);
+    Call<Achievements> getMyAchievements(@Header("Authorization")String token, @Path("id") String id);
 
 }

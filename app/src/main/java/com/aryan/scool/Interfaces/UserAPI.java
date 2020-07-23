@@ -10,6 +10,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UserAPI {
@@ -32,5 +33,7 @@ public interface UserAPI {
     @GET("users/students/class/{class}")
     Call<List<UserModel>> getSelectedClassStudent(@Header("Authorization")String token, @Path("class") String _id);
 
+    @PUT("users/achievement/{id}")
+    Call<UserModel> updateAchievements(@Header("Authorization")String token, @Path("id") String id, @Body UserModel users);
 
 }
