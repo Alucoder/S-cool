@@ -21,13 +21,16 @@ public interface UserAPI {
     Call<List<UserModel>> getStudentList();
 
     @GET("users/students/{id}")
-    Call<UserModel> getSelectedStudent(@Path("id") String _id);
+    Call<UserModel> getSelectedStudent(@Header("Authorization")String token, @Path("id") String _id);
 
     @GET("users/profile")
     Call<UserModel> getUserProfile(@Header("Authorization")String token);
 
     @GET("users/userteacher")
     Call<List<UserModel>> getTeacherList();
+
+    @GET("users/students/class/{class}")
+    Call<List<UserModel>> getSelectedClassStudent(@Header("Authorization")String token, @Path("class") String _id);
 
 
 }

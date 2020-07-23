@@ -71,7 +71,7 @@ public class TeacherInfoAdapter extends RecyclerView.Adapter<TeacherInfoAdapter.
             private void openTeacehrsDialog() {
                 Bundle args = new Bundle();
                 args.putString("name", teachers.getFname());
-                args.putLong("phone", teachers.getPhone());
+                args.putString("phone", teachers.getPhone());
                 args.putString("email", teachers.getEmail());
 
                 Dialog_Teaceher dialog_teaceher = new Dialog_Teaceher();

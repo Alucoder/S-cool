@@ -40,7 +40,7 @@ import retrofit2.http.Url;
 
 public class StudentProfileActivity extends AppCompatActivity {
 
-    ImageView imgProfile;
+    ImageView profile;
     String userid;
     CompactCalendarView compactCalendarView;
     TextView userName, userID, userEmail, userPhone, txtMonth, txtYear;
@@ -56,6 +56,7 @@ public class StudentProfileActivity extends AppCompatActivity {
         userID = findViewById(R.id.txtStudentId);
         userEmail = findViewById(R.id.txtStudentEmail);
         userPhone = findViewById(R.id.txtStudentPhoneNumber);
+        profile = findViewById(R.id.img_StudentImage);
 
         txtMonth = findViewById(R.id.txtCalMonth);
         txtYear = findViewById(R.id.txtCalYear);
@@ -91,12 +92,6 @@ public class StudentProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void MyProfile() {
-        userName.setText(StudentDashboard.user.getFname());
-        userID.setText(StudentDashboard.user.getUserid());
-        userEmail.setText(StudentDashboard.user.getEmail());
-        userPhone.setText("" + StudentDashboard.user.getPhone());
-    }
 
     public void getMyAttendance(){
         AttendanceAPI attendanceListAPI = RetrofitUrl.getInstance().create(AttendanceAPI.class);
@@ -151,11 +146,10 @@ public class StudentProfileActivity extends AppCompatActivity {
                 userName.setText(userModel.getFname());
                 userID.setText(userModel.getUserid());
                 userEmail.setText(userModel .getEmail());
-                userPhone.setText("" + userModel.getPhone());
+                userPhone.setText(userModel.getPhone());
 
                 String imgPath = RetrofitUrl.imagePath + response.body().getProfile();
 
-                ImageView profile = findViewById(R.id.img_StudentImage);
                 try{
                     Picasso.get().load(imgPath) .into(profile);
 
