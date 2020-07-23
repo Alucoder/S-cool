@@ -2,6 +2,8 @@ package com.aryan.scool.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -11,11 +13,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aryan.scool.Adapters.NoticeAdapter;
 import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Interfaces.NoticeAPI;
 import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.NoticeModel;
 import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +32,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
     CardView cv_sd_subject, cv_stdDash_teacher;
     ImageView imgProfile;
     TextView txtDashName;
+    RecyclerView rvNotice;
     public static UserModel user;
     ImageView iv;
 
@@ -40,8 +48,10 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
         iv = findViewById(R.id.logout);
         txtDashName = findViewById(R.id.txtDashName);
         imgProfile = findViewById(R.id.img_dashboard_student_profile);
+        rvNotice = findViewById(R.id.rvNoticeSD);
 
         getProfile();
+        getNotices();
         imgProfile.setOnClickListener(this);
         cv_sd_subject.setOnClickListener(this);
         cv_stdDash_teacher.setOnClickListener(this);
@@ -97,6 +107,33 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(StudentDashboard.this, StudentProfileActivity.class));
+            }
+        });
+    }
+
+    public void getNotices(){
+        NoticeAPI noticeAPI = RetrofitUrl.getInstance().create(NoticeAPI.class);
+        Call<List<NoticeModel>> noticeModelCall = noticeAPI.getNotice();
+
+        noticeModelCall.enqueue(new Callback<List<NoticeModel>>() {
+            @Override
+            public void onResponse(Call<List<NoticeModel>> call, Response<List<NoticeModel>> response) {
+                if(response.body() != null) {
+                    List<NoticeModel> notices = response.body();
+                    NoticeAdapter adapter = new NoticeAdapter(notices);
+                    rvNotice.setAdapter(adapter);
+                    rvNotice.setLayoutManager(new LinearLayoutManager(StudentDashboard.this));
+
+                }
+                else{
+                    Toast.makeText(StudentDashboard.this, "Null", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<NoticeModel>> call, Throwable t) {
+                Toast.makeText(StudentDashboard.this, "error:" + t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

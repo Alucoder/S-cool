@@ -70,7 +70,7 @@ public class ResultActivity extends AppCompatActivity implements TakeResult {
 
     public void getStudents() {
         UserAPI studentList = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<List<UserModel>> studentListCall = studentList.getStudentList();
+        Call<List<UserModel>> studentListCall = studentList.getSelectedClassStudent(RetrofitUrl.token, "5eed8730275fa4e4f73b8e78");
 
         studentListCall.enqueue(new Callback<List<UserModel>>() {
             @Override
