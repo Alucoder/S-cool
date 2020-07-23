@@ -46,9 +46,9 @@ public class ClassroomAdapter extends RecyclerView.Adapter<ClassroomAdapter.Clas
         final ClassModel subjects = classList.get(position);
         Mode();
         holder.sub_titile.setText(subjects.getClassroom());
-        if(subjects.getSection() != null) {
-            holder.sub_details.setText(subjects.getSection());
-        }
+//        if(subjects.getSection() != null) {
+            holder.sub_details.setText("");
+//        }
     }
 
     @Override

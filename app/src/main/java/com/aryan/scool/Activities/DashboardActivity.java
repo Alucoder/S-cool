@@ -63,7 +63,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent);
                 break;
             case R.id.btnNavigateStudents:
-                intent = new Intent(DashboardActivity.this, MyClassListActivity.class);
+                intent = new Intent(DashboardActivity.this, StudentListActivity.class);
                 startActivity(intent);
                 break;
             case R.id.logout:

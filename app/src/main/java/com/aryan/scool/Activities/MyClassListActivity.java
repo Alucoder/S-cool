@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -47,7 +48,7 @@ public class MyClassListActivity extends AppCompatActivity {
                 classes = response.body();
                 ClassroomAdapter classroomAdapter = new ClassroomAdapter(classes, MyClassListActivity.this);
                 rvClasses.setAdapter(classroomAdapter);
-                rvClasses.setLayoutManager(new LinearLayoutManager(MyClassListActivity.this));
+                rvClasses.setLayoutManager(new GridLayoutManager(MyClassListActivity.this, 3));
             }
 
             @Override
