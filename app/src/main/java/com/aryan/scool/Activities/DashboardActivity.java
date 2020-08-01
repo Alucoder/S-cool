@@ -50,7 +50,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         userimage = findViewById(R.id.userimage);
         rvNoticeDash = findViewById(R.id.rvNoticeDash);
 
-        img = findViewById(R.id.logout);
+        img = findViewById(R.id.settingD);
         img.setOnClickListener(this);
         btnNavigateAttendance.setOnClickListener(this);
         btnNavigateResult.setOnClickListener(this);
@@ -76,11 +76,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 intent = new Intent(DashboardActivity.this, StudentListActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.logout:
-                deleteSavedUser();
-                RetrofitUrl.token = "Bearer ";
-                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
-                finish();
+            case R.id.settingD:
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
+//                deleteSavedUser();
+//                RetrofitUrl.token = "Bearer ";
+//                startActivity(new Intent(DashboardActivity.this, LoginActivity.class));
+//                finish();
 
         }
     }

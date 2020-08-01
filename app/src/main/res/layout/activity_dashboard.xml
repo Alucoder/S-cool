@@ -35,12 +35,11 @@
             tools:layout_editor_absoluteY="11dp" />
 
         <ImageView
-            android:id="@+id/logout"
-            android:layout_width="20dp"
-            android:layout_height="24dp"
+            android:id="@+id/settingD"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="left"
-            android:layout_marginTop="2dp"
-            android:background="@drawable/notification"
+            android:background="@drawable/settings"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>

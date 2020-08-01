@@ -45,7 +45,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
 
         cv_sd_subject = findViewById(R.id.cv_sd_subject);
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
-        iv = findViewById(R.id.logout);
+        iv = findViewById(R.id.settingSD);
         txtDashName = findViewById(R.id.txtDashName);
         imgProfile = findViewById(R.id.img_dashboard_student_profile);
         rvNotice = findViewById(R.id.rvNoticeSD);
@@ -72,11 +72,13 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
             case R.id.cv_stdDash_teacher:
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
                 break;
-            case R.id.logout:
-                deleteSavedUser();
-                RetrofitUrl.token = "Bearer ";
-                startActivity(new Intent(StudentDashboard.this, LoginActivity.class));
-                finish();
+            case R.id.settingSD:
+                startActivity(new Intent(this, SettingsActivity.class));
+                break;
+//                deleteSavedUser();
+//                RetrofitUrl.token = "Bearer ";
+//                startActivity(new Intent(StudentDashboard.this, LoginActivity.class));
+//                finish();
         }
     }
 

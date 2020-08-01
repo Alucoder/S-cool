@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvChangePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textSize="25sp"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:textStyle="bold"
+        android:text="Change Password"
+        android:textAlignment="viewEnd"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textColor="#5167DD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <EditText
+        android:id="@+id/etOldPassword"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:focusable="true"
+        android:hint="Old password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvChangePassword"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/etNewPassword"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:focusable="true"
+        android:hint="New password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@+id/etOldPassword"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <EditText
+        android:id="@+id/etConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:focusable="true"
+        android:hint="Confirm password"
+        android:inputType="textPassword"
+        android:maxLines="1"
+        android:textSize="22sp"
+        app:layout_constraintTop_toBottomOf="@+id/etNewPassword"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/btnChangePassword"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_margin="20dp"
+        android:fontFamily="monospace"
+        android:text="Done"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@+id/etConfirmPassword" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,13 +8,16 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Interfaces.AchievementAPI;
 import com.aryan.scool.Interfaces.AttendanceAPI;
 import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.Achievements;
 import com.aryan.scool.Models.AttendanceModel;
 import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
@@ -40,10 +43,10 @@ import retrofit2.http.Url;
 
 public class StudentProfileActivity extends AppCompatActivity {
 
-    ImageView profile;
+    ImageView profile, rvRecAchievementsImg, settings;
     String userid;
     CompactCalendarView compactCalendarView;
-    TextView userName, userID, userEmail, userPhone, txtMonth, txtYear;
+    TextView userName, userID, userEmail, userPhone, txtMonth, txtYear, tvRecTitleProfile;
     public static UserModel userModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,9 +60,13 @@ public class StudentProfileActivity extends AppCompatActivity {
         userEmail = findViewById(R.id.txtStudentEmail);
         userPhone = findViewById(R.id.txtStudentPhoneNumber);
         profile = findViewById(R.id.img_StudentImage);
+        settings = findViewById(R.id.settingSProfile);
 
         txtMonth = findViewById(R.id.txtCalMonth);
         txtYear = findViewById(R.id.txtCalYear);
+
+        rvRecAchievementsImg = findViewById(R.id.rvRecAchievementsImg);
+        tvRecTitleProfile = findViewById(R.id.tvRecTitleProfile);
 
         Intent intent = getIntent();
         userid = intent.getStringExtra("studentid");
@@ -69,6 +76,12 @@ public class StudentProfileActivity extends AppCompatActivity {
         getMyProfile();
         getMyAttendance();
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(StudentProfileActivity.this, SettingsActivity.class));
+            }
+        });
 
         // define a listener to receive callbacks when certain events happen.
         compactCalendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
@@ -156,10 +169,32 @@ public class StudentProfileActivity extends AppCompatActivity {
                 }catch (Exception e){
                     Picasso.get().load(R.drawable.usericon).into(profile);
                 }
+                if(userModel.getAchievements() != null){
+                    getAchievement(userModel);
+                }
             }
 
             @Override
             public void onFailure(Call<UserModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void getAchievement(UserModel user){
+        AchievementAPI achievementAPI = RetrofitUrl.getInstance().create(AchievementAPI.class);
+        Call<Achievements> achievementCall = achievementAPI.getMyAchievements(RetrofitUrl.token, user.getAchievements());
+
+        achievementCall.enqueue(new Callback<Achievements>() {
+            @Override
+            public void onResponse(Call<Achievements> call, Response<Achievements> response) {
+                String imgPath = RetrofitUrl.imagePath + response.body().getBadge();
+                Picasso.get().load(imgPath) .into(rvRecAchievementsImg);
+                tvRecTitleProfile.setText(response.body().getAchievement());
+            }
+
+            @Override
+            public void onFailure(Call<Achievements> call, Throwable t) {
 
             }
         });

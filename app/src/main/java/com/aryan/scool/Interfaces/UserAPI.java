@@ -7,6 +7,8 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -36,4 +38,15 @@ public interface UserAPI {
     @PUT("users/achievement/{id}")
     Call<UserModel> updateAchievements(@Header("Authorization")String token, @Path("id") String id, @Body UserModel users);
 
+
+    @PUT("users/profile")
+    Call<UserModel> updateProfile(@Header("Authorization")String token, @Body UserModel users);
+
+    @FormUrlEncoded
+    @PUT("users/changePassword")
+    Call<Void> changePassword(@Header("Authorization")String token, @Field("password") String password);
+
+    @FormUrlEncoded
+    @POST("users/checkPassword/{id}")
+    Call<Void> checkPassword(@Header("Authorization")String token, @Path("id") String id,  @Field("password") String password);
 }

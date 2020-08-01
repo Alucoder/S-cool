@@ -97,6 +97,12 @@ public class ViewStudentProfileActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     public void getAchievement(UserModel user){
         AchievementAPI achievementAPI = RetrofitUrl.getInstance().create(AchievementAPI.class);
         Call<Achievements> achievementCall = achievementAPI.getMyAchievements(RetrofitUrl.token, user.getAchievements());
