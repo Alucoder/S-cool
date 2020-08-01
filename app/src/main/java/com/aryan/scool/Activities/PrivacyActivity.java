@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.aryan.scool.Helper.RetrofitUrl;
 import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
 
 import retrofit2.Call;
@@ -42,8 +43,9 @@ public class PrivacyActivity extends AppCompatActivity {
 
     public void validateAndChangePassword(){
 
+        UserModel userPass = new UserModel(StudentDashboard.user.getUserid() ,etOld.getText().toString());
         UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<Void> userCall = userAPI.checkPassword(RetrofitUrl.token, StudentDashboard.user.getUserid(), etOld.getText().toString());
+        Call<Void> userCall = userAPI.checkPassword(RetrofitUrl.token, StudentDashboard.user.getUserid(), userPass);
 
         userCall.enqueue(new Callback<Void>() {
             @Override
@@ -54,9 +56,10 @@ public class PrivacyActivity extends AppCompatActivity {
                 }
 
                 if(etNewPass.getText().toString().matches(etConfirm.getText().toString())){
+                    UserModel userNewPass = new UserModel(StudentDashboard.user.getUserid() ,etNewPass.getText().toString());
 
                     UserAPI userAPI = RetrofitUrl.getInstance().create(UserAPI.class);
-                    Call<Void> userCall = userAPI.changePassword(RetrofitUrl.token, etNewPass.getText().toString());
+                    Call<Void> userCall = userAPI.changePassword(RetrofitUrl.token, userNewPass);
 
                     userCall.enqueue(new Callback<Void>() {
                         @Override

@@ -73,7 +73,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
                 break;
             case R.id.settingSD:
-                startActivity(new Intent(this, SettingsActivity.class));
+                startActivity(new Intent(StudentDashboard.this, SettingsActivity.class));
                 break;
 //                deleteSavedUser();
 //                RetrofitUrl.token = "Bearer ";

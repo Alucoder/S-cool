@@ -42,11 +42,11 @@ public interface UserAPI {
     @PUT("users/profile")
     Call<UserModel> updateProfile(@Header("Authorization")String token, @Body UserModel users);
 
-    @FormUrlEncoded
-    @PUT("users/changePassword")
-    Call<Void> changePassword(@Header("Authorization")String token, @Field("password") String password);
 
-    @FormUrlEncoded
+    @PUT("users/changePassword")
+    Call<Void> changePassword(@Header("Authorization")String token, @Body UserModel user);
+
+
     @POST("users/checkPassword/{id}")
-    Call<Void> checkPassword(@Header("Authorization")String token, @Path("id") String id,  @Field("password") String password);
+    Call<Void> checkPassword(@Header("Authorization")String token, @Path("id") String id,  @Body UserModel user);
 }
