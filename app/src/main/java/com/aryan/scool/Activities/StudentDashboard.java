@@ -29,7 +29,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class StudentDashboard extends AppCompatActivity implements View.OnClickListener {
-    CardView cv_sd_subject, cv_stdDash_teacher;
+    CardView cv_sd_subject, cv_stdDash_teacher, cv_Result;
     ImageView imgProfile;
     TextView txtDashName;
     RecyclerView rvNotice;
@@ -45,6 +45,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
 
         cv_sd_subject = findViewById(R.id.cv_sd_subject);
         cv_stdDash_teacher = findViewById(R.id.cv_stdDash_teacher);
+        cv_Result = findViewById(R.id.cv_stdResult);
         iv = findViewById(R.id.settingSD);
         txtDashName = findViewById(R.id.txtDashName);
         imgProfile = findViewById(R.id.img_dashboard_student_profile);
@@ -55,6 +56,7 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
         imgProfile.setOnClickListener(this);
         cv_sd_subject.setOnClickListener(this);
         cv_stdDash_teacher.setOnClickListener(this);
+        cv_Result.setOnClickListener(this);
         iv.setOnClickListener(this);
     }
 
@@ -71,6 +73,9 @@ public class StudentDashboard extends AppCompatActivity implements View.OnClickL
                 break;
             case R.id.cv_stdDash_teacher:
                 startActivity(new Intent(StudentDashboard.this, TeacherInfo.class));
+                break;
+            case R.id.cv_stdResult:
+                startActivity(new Intent(StudentDashboard.this, ResultViewActivity.class));
                 break;
             case R.id.settingSD:
                 startActivity(new Intent(StudentDashboard.this, SettingsActivity.class));
