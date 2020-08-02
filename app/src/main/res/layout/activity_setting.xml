@@ -7,6 +7,7 @@
     android:padding="30dp">
 
     <LinearLayout
+        android:id="@+id/privacySettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -28,6 +29,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/editProfileSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -50,6 +52,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/logoutSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -71,6 +74,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/aboutSettings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorWhite"
@@ -80,13 +84,13 @@
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:background="@drawable/pasword"/>
+            android:background="@drawable/settings"/>
 
         <TextView
             android:id="@+id/tvNotification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Change Password"
+            android:text="Help"
             android:textColor="@color/colorContext"
             android:layout_marginStart="10dp"/>
 

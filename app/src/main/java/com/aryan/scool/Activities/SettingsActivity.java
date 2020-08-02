@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +15,17 @@ import com.aryan.scool.R;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    TextView privacy, logout, editP, about;
+    LinearLayout privacy, logout, editP, about;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_setting);
 
         initSettingsLayout();
 
         privacy.setOnClickListener(this);
+        editP.setOnClickListener(this);
         logout.setOnClickListener(this);
 
     }
@@ -46,6 +48,11 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
             case R.id.privacySettings:
                 Intent changePassword = new Intent(this, PrivacyActivity.class);
                 startActivity(changePassword);
+                break;
+
+            case R.id.editProfileSettings:
+                Intent editProfile = new Intent(this, EditProfileActivity.class);
+                startActivity(editProfile);
                 break;
 
             case R.id.logoutSettings:

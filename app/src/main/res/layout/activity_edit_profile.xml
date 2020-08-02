@@ -24,6 +24,32 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
             <TextView
+                android:layout_width="90dp"
+                android:layout_height="wrap_content"
+                android:text="Id"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorHeading"/>
+
+            <EditText
+                android:id="@+id/tvId"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:text="1254682"
+                android:enabled="false"
+                android:textColor="@color/colorContext"
+                android:background="@color/colorTopBar"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+            <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:text="Image"
@@ -39,6 +65,16 @@
                 android:id="@+id/uploadButton"
                 android:paddingHorizontal="15dp"
                 android:background="@color/colorLightGrey"/>
+
+            <ImageView
+                android:id="@+id/ImgProfileChange"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:elevation="1dp"
+                android:src="@drawable/usericon"
+                />
+
         </LinearLayout>
 
         <LinearLayout
@@ -55,7 +91,7 @@
                 android:textColor="@color/colorHeading"/>
 
             <EditText
-                android:id="@+id/tvName"
+                android:id="@+id/tvNameUpd"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="Rohit shrma"
@@ -65,30 +101,7 @@
                 android:paddingVertical="10dp"/>
 
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp">
-            <TextView
-                android:layout_width="90dp"
-                android:layout_height="wrap_content"
-                android:text="Id"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorHeading"/>
 
-            <EditText
-                android:id="@+id/tvId"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="1254682"
-                android:textColor="@color/colorContext"
-                android:background="@color/colorTopBar"
-                android:paddingHorizontal="15dp"
-                android:paddingVertical="10dp"/>
-
-        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,7 +116,7 @@
                 android:textColor="@color/colorHeading"/>
 
             <EditText
-                android:id="@+id/tvEmail"
+                android:id="@+id/tvEmailUpd"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="example@email.com"
@@ -121,13 +134,13 @@
             <TextView
                 android:layout_width="90dp"
                 android:layout_height="wrap_content"
-                android:text="email"
+                android:text="phone"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorHeading"/>
 
             <EditText
-                android:id="@+id/tvPhoneNumber"
+                android:id="@+id/tvPhoneNumberUpd"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:text="984984523"
@@ -137,6 +150,18 @@
                 android:paddingVertical="10dp"/>
 
         </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Done"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/btnDoneEdit"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:paddingHorizontal="50dp"
+            android:background="@color/colorLightGrey"/>
+
 
     </LinearLayout>
 

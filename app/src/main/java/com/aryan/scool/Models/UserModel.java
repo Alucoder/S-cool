@@ -15,6 +15,11 @@ public class UserModel {
         this.password = password;
     }
 
+    public UserModel(String fname, String email, String phone) {
+        this.fname = fname;
+        this.email = email;
+        this.phone = phone;
+    }
 
     public UserModel(String achievements) {
         this.achievement = achievements;
