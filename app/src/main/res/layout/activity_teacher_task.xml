@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.TeacherTaskActivity">
+
+    <LinearLayout
+        android:id="@+id/dashboard_grid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnNavigateAttendance"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombtndashboard"
+            android:drawableTop="@drawable/notification"
+            android:drawablePadding="10dp"
+            android:text="Attendance"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+
+        <Button
+            android:id="@+id/btnNavigateResult"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/custombtndashboard"
+            android:drawableTop="@drawable/notification"
+            android:drawablePadding="10dp"
+            android:text="Result"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+
+        <Button
+            android:id="@+id/btnNavigateStudents"
+            android:layout_width="97dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/custombtndashboard"
+            android:drawableTop="@drawable/notification"
+            android:drawablePadding="10dp"
+            android:text="Students"
+            android:textAllCaps="false"
+            android:textColor="@color/colorContext" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.aryan.scool.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,10 +16,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.aryan.scool.Adapters.ClassroomAdapter;
 import com.aryan.scool.Adapters.NoticeAdapter;
 import com.aryan.scool.Helper.RetrofitUrl;
+import com.aryan.scool.Interfaces.ClassroomAPI;
 import com.aryan.scool.Interfaces.NoticeAPI;
 import com.aryan.scool.Interfaces.UserAPI;
+import com.aryan.scool.Models.ClassModel;
 import com.aryan.scool.Models.NoticeModel;
 import com.aryan.scool.Models.UserModel;
 import com.aryan.scool.R;
@@ -34,27 +38,25 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     public static UserModel profile;
     TextView txtDashName;
-    Button btnNavigateAttendance, btnNavigateResult, btnNavigateStudents;
     RecyclerView rvNoticeDash;
     ImageView img, userimage;
+
+    RecyclerView rvClasses;
+    List<ClassModel> classes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        btnNavigateAttendance = findViewById(R.id.btnNavigateAttendance);
-        btnNavigateResult = findViewById(R.id.btnNavigateResult);
-        btnNavigateStudents = findViewById(R.id.btnNavigateStudents);
         txtDashName = findViewById(R.id.txtDashName);
         userimage = findViewById(R.id.userimage);
         rvNoticeDash = findViewById(R.id.rvNoticeDash);
 
+        rvClasses = findViewById(R.id.rvClassList);
+
         img = findViewById(R.id.settingD);
         img.setOnClickListener(this);
-        btnNavigateAttendance.setOnClickListener(this);
-        btnNavigateResult.setOnClickListener(this);
-        btnNavigateStudents.setOnClickListener(this);
         getProfile();
         getNotices();
 
@@ -62,20 +64,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
-        Intent intent;
         switch(v.getId()){
-            case R.id.btnNavigateAttendance:
-                intent = new Intent(DashboardActivity.this, AttendanceActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnNavigateResult:
-                intent = new Intent(DashboardActivity.this, ResultActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.btnNavigateStudents:
-                intent = new Intent(DashboardActivity.this, StudentListActivity.class);
-                startActivity(intent);
-                break;
             case R.id.settingD:
                 startActivity(new Intent(this, SettingsActivity.class));
                 break;
@@ -100,6 +89,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 }
                 profile = response.body();
                 setProfile(profile);
+                getMyClasses(profile);
+
             }
 
             @Override
@@ -153,5 +144,29 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public void deleteSavedUser(){
         SharedPreferences sharedPreferences = getSharedPreferences("Scool", 0);
         sharedPreferences.edit().clear().commit();
+    }
+
+    private void getMyClasses(UserModel Userprofile) {
+        ClassroomAPI classroomAPI = RetrofitUrl.getInstance().create(ClassroomAPI.class);
+        Call<List<ClassModel>> listCallClass = classroomAPI.getMyClasses(RetrofitUrl.token, Userprofile.get_id());
+
+        listCallClass.enqueue(new Callback<List<ClassModel>>() {
+            @Override
+            public void onResponse(Call<List<ClassModel>> call, Response<List<ClassModel>> response) {
+                if(!response.isSuccessful()){
+                    Toast.makeText(DashboardActivity.this, "Error loading subjects!!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                classes = response.body();
+                ClassroomAdapter classroomAdapter = new ClassroomAdapter(classes, DashboardActivity.this);
+                rvClasses.setAdapter(classroomAdapter);
+                rvClasses.setLayoutManager(new GridLayoutManager(DashboardActivity.this, 3));
+            }
+
+            @Override
+            public void onFailure(Call<List<ClassModel>> call, Throwable t) {
+                Toast.makeText(DashboardActivity.this, "Error loading subjects..", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

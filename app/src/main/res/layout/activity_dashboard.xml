@@ -54,47 +54,14 @@
         android:padding="30dp"
         android:background="@drawable/dashboardbg">
 
-        <LinearLayout
-            android:id="@+id/dashboard_grid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center">
-
-            <Button
-                android:id="@+id/btnNavigateAttendance"
-                android:layout_width="97dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custombtndashboard"
-                android:drawableTop="@drawable/notification"
-                android:text="Attendance"
-                android:textAllCaps="false"
-                android:drawablePadding="10dp"
-                android:textColor="@color/colorContext" />
-
-            <Button
-                android:id="@+id/btnNavigateResult"
-                android:layout_width="97dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custombtndashboard"
-                android:drawableTop="@drawable/notification"
-                android:drawablePadding="10dp"
-                android:layout_marginHorizontal="20dp"
-                android:text="Result"
-                android:textAllCaps="false"
-                android:textColor="@color/colorContext" />
-
-            <Button
-                android:id="@+id/btnNavigateStudents"
-                android:layout_width="97dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/custombtndashboard"
-                android:drawableTop="@drawable/notification"
-                android:drawablePadding="10dp"
-                android:text="Students"
-                android:textAllCaps="false"
-                android:textColor="@color/colorContext" />
-
-        </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvClassList"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:padding="30dp"/>
 
         <TextView
             android:id="@+id/tvnotice"
