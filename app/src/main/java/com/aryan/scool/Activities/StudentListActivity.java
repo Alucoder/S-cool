@@ -24,6 +24,7 @@ public class StudentListActivity extends AppCompatActivity {
 
     RecyclerView rvStudents;
     List<UserModel> studentsList;
+    String teacherStudent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,14 @@ public class StudentListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student_list);
 
         rvStudents = findViewById(R.id.rv_students_list);
+        teacherStudent = getIntent().getStringExtra("teacherStudent");
+
         getStudents();
     }
 
     public void getStudents(){
         UserAPI students = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<List<UserModel>> studentsCall = students.getSelectedClassStudent(RetrofitUrl.token, "5eed8730275fa4e4f73b8e78");
+        Call<List<UserModel>> studentsCall = students.getSelectedClassStudent(RetrofitUrl.token, teacherStudent);
 
         studentsCall.enqueue(new Callback<List<UserModel>>() {
             @Override

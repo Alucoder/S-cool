@@ -37,11 +37,13 @@ public class ResultActivity extends AppCompatActivity implements TakeResult {
     List<UserModel> students;
     int totalStudents = 0;
     public static ArrayList<ResultModel> resultList;
+    String teacherResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        teacherResult = getIntent().getStringExtra("teacherResult");
 
         rvResult = findViewById(R.id.rvResult);
         btnResultDone = findViewById(R.id.btnResultDone);
@@ -70,7 +72,7 @@ public class ResultActivity extends AppCompatActivity implements TakeResult {
 
     public void getStudents() {
         UserAPI studentList = RetrofitUrl.getInstance().create(UserAPI.class);
-        Call<List<UserModel>> studentListCall = studentList.getSelectedClassStudent(RetrofitUrl.token, "5eed8730275fa4e4f73b8e78");
+        Call<List<UserModel>> studentListCall = studentList.getSelectedClassStudent(RetrofitUrl.token, teacherResult);
 
         studentListCall.enqueue(new Callback<List<UserModel>>() {
             @Override

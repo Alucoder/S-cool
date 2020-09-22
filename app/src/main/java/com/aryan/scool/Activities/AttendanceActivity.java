@@ -43,13 +43,13 @@ public class AttendanceActivity extends AppCompatActivity implements TakeAttenda
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance);
+        teacherAttendance = getIntent().getStringExtra("teacherAttendance");
 
         rvAttendance = findViewById(R.id.attendanceRV);
         btnAttendanceDone = findViewById(R.id.btnAttendanceDone);
         btnView = findViewById(R.id.btnAttendanceView);
         getStudents();
         attendanceList = new ArrayList<>();
-        teacherAttendance = getIntent().getStringExtra("teacherAttendance");
 
 
         btnAttendanceDone.setOnClickListener(new View.OnClickListener() {
